@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":hero-component"))
     // Hilt
     implementation(Deps.Hilt.android)
     kapt(Deps.Hilt.compiler)

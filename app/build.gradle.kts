@@ -53,7 +53,10 @@ android {
 }
 
 dependencies {
-    
+    implementation(project(":core"))
+    implementation(project(":hero-component"))
+    implementation(project(":hero-detail-info-feature"))
+    implementation(project(":hero-list-feature"))
     // Network
     implementation(Deps.Network.retrofit2)
     implementation(Deps.Network.retrofit2Gson)

@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":hero-component"))
     // Coroutines
     implementation(Deps.Coroutines.core)
     implementation(Deps.Coroutines.android)
