@@ -20,8 +20,10 @@ pluginManagement {
     }
 }
 rootProject.name = "SayMyNameApp"
-include(":app")
-include(":core")
-include(":hero-component")
-include(":hero-list-feature")
-include(":hero-detail-info-feature")
+include(
+    ":app",
+    ":core",
+    ":hero-component",
+    ":hero-list-feature",
+    ":hero-detail-info-feature"
+)

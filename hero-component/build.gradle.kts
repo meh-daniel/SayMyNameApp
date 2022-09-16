@@ -1,29 +1,22 @@
 plugins {
-    id(Plugins.ANDROID_LIBRARY)
-    id(Plugins.KOTLIN_ANDROID)
+    id(Plugins.AGP.LIBRARY)
+    kotlin(Plugins.Kotlin.ANDROID)
+    kotlin(Plugins.Kotlin.KAPT)
 }
+
 repositories {
     mavenCentral()
     google()
 }
+
 android {
     compileSdk = Config.compileSdk
-
     defaultConfig {
+        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         minSdk =  Config.minSDK
         targetSdk = Config.targetSDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = Config.Options.compileOptions
@@ -35,11 +28,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":hero-component"))
+    implementation(project(Modules.Core.CORE))
     // Coroutines
     implementation(Deps.Coroutines.core)
     implementation(Deps.Coroutines.android)
+    // Di
+    implementation(Deps.Javax.inject)
     // Network
     implementation(Deps.Network.retrofit2)
     implementation(Deps.Network.retrofit2Gson)

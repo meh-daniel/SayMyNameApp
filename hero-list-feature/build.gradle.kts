@@ -1,32 +1,22 @@
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    id(Plugins.KOTLIN_ANDROID)
-    kotlin(Plugins.KAPT)
+    id(Plugins.AGP.LIBRARY)
+    id(Plugins.HILT)
+    kotlin(Plugins.Kotlin.ANDROID)
+    kotlin(Plugins.Kotlin.KAPT)
 }
+
 repositories {
     mavenCentral()
     google()
 }
-android {
-    compileSdk = 32
 
+android {
+    compileSdk = Config.compileSdk
     defaultConfig {
-        applicationId = "meh.daniel.com.hero_list_feature"
+        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         minSdk =  Config.minSDK
         targetSdk = Config.targetSDK
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = Config.Options.compileOptions
@@ -40,8 +30,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":hero-component"))
+    implementation(project(Modules.Core.CORE))
+    implementation(project(Modules.Components.HERO))
     // Hilt
     implementation(Deps.Hilt.android)
     kapt(Deps.Hilt.compiler)

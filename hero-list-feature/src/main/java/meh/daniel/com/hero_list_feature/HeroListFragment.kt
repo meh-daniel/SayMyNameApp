@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
 import meh.daniel.com.hero_list_feature.databinding.FragmentHerolistBinding
 
-class HeroListFragment() : BaseFragment<HeroListViewModel, FragmentHerolistBinding>(R.layout.fragment_herolist){
+@AndroidEntryPoint
+class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding>(R.layout.fragment_herolist){
 
     override val viewModel: HeroListViewModel by viewModels()
 

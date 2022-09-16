@@ -1,14 +1,15 @@
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    id(Plugins.KOTLIN_ANDROID)
-    kotlin(Plugins.KAPT)
+    id(Plugins.AGP.APPLICATION)
+    id(Plugins.HILT)
+    kotlin(Plugins.Kotlin.ANDROID)
+    kotlin(Plugins.Kotlin.KAPT)
 }
 repositories {
     mavenCentral()
     google()
 }
 android {
-    compileSdk = 32
+    compileSdk = Config.compileSdk
     defaultConfig {
         applicationId = "meh.daniel.com.saymynameapp"
         minSdk =  Config.minSDK
@@ -53,10 +54,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":hero-component"))
-    implementation(project(":hero-detail-info-feature"))
-    implementation(project(":hero-list-feature"))
+    implementation(project(Modules.Components.HERO))
+    implementation(project(Modules.Core.CORE))
+    implementation(project(Modules.Features.HERO_LIST))
+    implementation(project(Modules.Features.HERO_DETAIL_INFO))
     // Network
     implementation(Deps.Network.retrofit2)
     implementation(Deps.Network.retrofit2Gson)

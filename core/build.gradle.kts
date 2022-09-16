@@ -1,7 +1,7 @@
 plugins {
-    id(Plugins.ANDROID_LIBRARY)
-    id(Plugins.KOTLIN_ANDROID)
-    kotlin(Plugins.KAPT)
+    id(Plugins.AGP.LIBRARY)
+    kotlin(Plugins.Kotlin.ANDROID)
+    kotlin(Plugins.Kotlin.KAPT)
 }
 repositories {
     mavenCentral()

@@ -2,6 +2,8 @@ package meh.daniel.com.hero_list_feature
 
 import android.accounts.NetworkErrorException
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,7 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.core.BaseViewModel
 
-class HeroListViewModel : BaseViewModel(){
+@HiltViewModel
+class HeroListViewModel @Inject constructor() : BaseViewModel(){
 
     private val _heroListState = MutableStateFlow<HeroListState>(HeroListState.Loading)
     val heroListState: Flow<HeroListState> = _heroListState.asStateFlow()
