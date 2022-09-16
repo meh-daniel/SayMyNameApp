@@ -26,6 +26,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
 
     override fun initialize() {
         initHeroRecycler()
+        viewModel.loadHeroList()
     }
 
     override fun setupSubscribers() {
@@ -36,6 +37,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
         viewModel.heroListState.onEach { state ->
             with(binding) {
                 heroListRc.visibility = if(state is HeroListState.Loaded) View.VISIBLE else View.GONE
+                if(state is HeroListState.Loaded) heroAdapter.submitList(state.repos)
                 progressBar.visibility = if (state is HeroListState.Loading) View.VISIBLE else View.GONE
                 messageTxt.visibility = when(state) {
                     is HeroListState.Empty -> View.VISIBLE
