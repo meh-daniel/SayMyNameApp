@@ -21,7 +21,7 @@ class NetworkModule {
     @Provides
     @Reusable
     @Named("baseUrlBreakingBadApi")
-    fun provideBaseUrl() : String = "s://www.breakingbadapi.com/api/"
+    fun provideBaseUrl() : String = "https://www.breakingbadapi.com/api/"
 
     @Provides
     @Reusable
@@ -48,6 +48,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("retrofitBreakingBadBuilder")
     fun provideRetrofitBuilder(
         @Named("baseUrlBreakingBadApi") baseUrl: String,
         gson: Gson,

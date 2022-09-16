@@ -45,7 +45,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
                     else -> View.GONE
                 }
                 messageTxt.text = when(state) {
-                    is HeroListState.Empty -> "пусто"
+                    is HeroListState.Empty -> getString(meh.daniel.com.core.R.string.empty)
                     is HeroListState.Error -> state.error
                     else -> ""
                 }

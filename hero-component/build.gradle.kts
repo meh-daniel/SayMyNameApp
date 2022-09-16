@@ -30,18 +30,18 @@ android {
 dependencies {
     implementation(project(Modules.Core.CORE))
     // Coroutines
-    implementation(Deps.Coroutines.core)
-    implementation(Deps.Coroutines.android)
+    implementation(Deps.Coroutines.CORE)
+    implementation(Deps.Coroutines.ANDROID)
     // Di
-    implementation(Deps.Javax.inject)
+    implementation(Deps.Javax.INJECT)
     // Network
-    implementation(Deps.Network.retrofit2)
-    implementation(Deps.Network.retrofit2Gson)
-    implementation(Deps.Network.logging)
+    implementation(Deps.Network.RETROFIT2)
+    implementation(Deps.Network.RETROFIT2_GSON)
+    implementation(Deps.Network.LOGGING_INERCEPTOR)
     // Android
-    testImplementation(Deps.Test.jUnit)
-    androidTestImplementation(Deps.Test.androidJUnit)
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.mockitoCore)
-    androidTestImplementation(Deps.Test.mockitoKotlin)
+    testImplementation(Deps.Test.JUNIT)
+    androidTestImplementation(Deps.Test.ANDROID_JUNIT)
+    androidTestImplementation(Deps.Test.ESPRESSO)
+    androidTestImplementation(Deps.Test.MOCKITO_CORE)
+    androidTestImplementation(Deps.Test.MOCKITO_KOTLIN)
 }
