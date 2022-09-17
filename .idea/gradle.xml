@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/hero-component" />
             <option value="$PROJECT_DIR$/hero-detail-info-feature" />
             <option value="$PROJECT_DIR$/hero-list-feature" />
+            <option value="$PROJECT_DIR$/ui-kit" />
           </set>
         </option>
       </GradleProjectSettings>

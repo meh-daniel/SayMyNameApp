@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import meh.daniel.com.hero_component.domain.Hero
 import meh.daniel.com.hero_list_feature.databinding.ItemHeroBinding
 
@@ -28,7 +29,9 @@ class HeroAdapter : ListAdapter<Hero, RecyclerView.ViewHolder>(HeroDiffUtil()) {
 class HeroViewHolder(private val binding: ItemHeroBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Hero){
         binding.nameHero.text = item.name
-        binding.photoHero
+        Glide.with(binding.photoHero)
+            .load(item.image)
+            .into(binding.photoHero)
     }
     companion object {
         fun from(parent: ViewGroup): RecyclerView.ViewHolder {

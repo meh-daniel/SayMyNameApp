@@ -1,8 +1,6 @@
 plugins {
     id(Plugins.AGP.LIBRARY)
-    id(Plugins.HILT)
     kotlin(Plugins.Kotlin.ANDROID)
-    kotlin(Plugins.Kotlin.KAPT)
 }
 
 repositories {
@@ -30,22 +28,6 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Main.UI_KIT))
-    implementation(project(Modules.Components.HERO))
-    // Hilt
-    implementation(Deps.Hilt.ANDROID)
-    kapt(Deps.Hilt.COMPILER)
-    // Lifecycle
-    implementation(Deps.Lifecycle.VIEW_MODEL)
-    implementation(Deps.Lifecycle.LIVE_DATA)
-    implementation(Deps.Lifecycle.RUNTIME)
-    // Navigation
-    implementation(Deps.Navigation.FRAGMENT)
-    implementation(Deps.Navigation.UI)
-    // Coroutines
-    implementation(Deps.Coroutines.CORE)
-    implementation(Deps.Coroutines.ANDROID)
     // UI
     implementation(Deps.UI.CONSTRAINT_LAYOUT)
     implementation(Deps.UI.RECYCLER_VIEW)

@@ -22,6 +22,7 @@ pluginManagement {
 rootProject.name = "SayMyNameApp"
 include(
     ":app",
+    ":ui-kit",
     ":core",
     ":hero-component",
     ":hero-list-feature",

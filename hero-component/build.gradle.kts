@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.Core.CORE))
+    implementation(project(Modules.Main.CORE))
     // Coroutines
     implementation(Deps.Coroutines.CORE)
     implementation(Deps.Coroutines.ANDROID)

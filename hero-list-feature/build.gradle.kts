@@ -30,7 +30,8 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.Core.CORE))
+    implementation(project(Modules.Main.CORE))
+    implementation(project(Modules.Main.UI_KIT))
     implementation(project(Modules.Components.HERO))
     // Hilt
     implementation(Deps.Hilt.ANDROID)
@@ -51,6 +52,9 @@ dependencies {
     implementation(Deps.UI.PROGRESS_BAR)
     implementation(Deps.UI.FRAGMENT_KTX)
     implementation(Deps.UI.ACTIVITY_KTX)
+    // Glide
+    implementation(Deps.ImageLoad.GLIDE)
+    implementation(Deps.ImageLoad.GLIDE_COMPILER)
     // Android
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)
