@@ -10,11 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.core.BaseViewModel
-import meh.daniel.com.hero_component.domain.HeroRepository
+import meh.daniel.com.hero_component.domain.Hero
+import meh.daniel.com.hero_component.domain.HeroBreakingBadRepository
 
 @HiltViewModel
 class HeroListViewModel @Inject constructor(
-    private val repository: HeroRepository
+    private val repository: HeroBreakingBadRepository
 ) : BaseViewModel(){
 
     private val _heroListState = MutableStateFlow<HeroListState>(HeroListState.Loading)
@@ -24,11 +25,11 @@ class HeroListViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             if (_heroListState.value is HeroListState.Loading){
                 try {
-                    val heroList = repository.getAll()
+                    val heroList = repository.getByEpisode(1)
                     if (heroList.isEmpty()){
                         _heroListState.value = HeroListState.Empty
                     } else {
-                        _heroListState.value = HeroListState.Loaded(heroList)
+                        _heroListState.value = HeroListState.Loaded(heroList.toUI())
                     }
                 } catch (e : Throwable) {
                     _heroListState.value = when(e) {
@@ -40,8 +41,21 @@ class HeroListViewModel @Inject constructor(
         }
     }
 
-    fun routeToDetails(id: Int){
+    fun routeToDetails(hero: HeroUI.Hero){
 
     }
 
+    fun routeToNextEpisode() {
+
+    }
+
+}
+
+internal fun List<Hero>.toUI(): List<HeroUI> {
+    return map {
+        HeroUI.Hero(
+            name = it.name,
+            image = it.image
+        )
+    }
 }

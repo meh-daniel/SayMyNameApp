@@ -17,7 +17,12 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
 
     override val viewModel: HeroListViewModel by viewModels()
 
-    private val heroAdapter = HeroAdapter()
+    private val heroAdapter = HeroAdapter({
+        viewModel.routeToDetails(it)
+    },
+        {
+        viewModel.routeToNextEpisode()
+    })
 
     override fun initBinding(
         inflater: LayoutInflater,

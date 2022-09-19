@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="nextEpisode">next Episode</string>
     <string name="empty">Empty</string>
     <string name="name">name:</string>
 </resources>

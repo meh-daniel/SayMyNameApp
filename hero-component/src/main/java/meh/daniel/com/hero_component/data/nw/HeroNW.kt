@@ -1,12 +1,13 @@
 package meh.daniel.com.hero_component.data.nw
 
+
 import com.google.gson.annotations.SerializedName
 
 data class HeroNW(
     @SerializedName("appearance")
-    val appearance: List<Any>,
+    val appearance: List<Int>,
     @SerializedName("better_call_saul_appearance")
-    val betterCallSaulAppearance: List<Int>,
+    val betterCallSaulAppearance: List<Any>,
     @SerializedName("birthday")
     val birthday: String,
     @SerializedName("category")

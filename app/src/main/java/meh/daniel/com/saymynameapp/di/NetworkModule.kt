@@ -34,7 +34,7 @@ class NetworkModule {
     @Reusable
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            this.level = HttpLoggingInterceptor.Level.BASIC
+            this.level = HttpLoggingInterceptor.Level.BODY
         }
     }
 

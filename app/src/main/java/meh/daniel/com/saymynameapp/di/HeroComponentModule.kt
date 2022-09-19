@@ -6,9 +6,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
 import javax.inject.Singleton
-import meh.daniel.com.hero_component.data.HeroRepositoryImpl
+import meh.daniel.com.hero_component.data.HeroBreakingBadRepositoryImpl
 import meh.daniel.com.hero_component.data.nw.BreakingBadApi
-import meh.daniel.com.hero_component.domain.HeroRepository
+import meh.daniel.com.hero_component.domain.HeroBreakingBadRepository
 import retrofit2.Retrofit
 
 @Module
@@ -27,8 +27,8 @@ class HeroComponentModule {
     @Singleton
     fun provideHeroRepository(
         api: BreakingBadApi
-    ) : HeroRepository {
-        return HeroRepositoryImpl(api)
+    ) : HeroBreakingBadRepository {
+        return HeroBreakingBadRepositoryImpl(api)
     }
 
 }
