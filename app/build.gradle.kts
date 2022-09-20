@@ -55,8 +55,9 @@ android {
 
 dependencies {
     implementation(project(Modules.Components.HERO))
+    implementation(project(Modules.Components.HERO_IMPL))
     implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Main.UI_KIT))
+    implementation(project(Modules.Main.CORE_UI))
     implementation(project(Modules.Features.HERO_LIST))
     implementation(project(Modules.Features.HERO_DETAIL_INFO))
     // Network

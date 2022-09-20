@@ -5,9 +5,10 @@ object Modules {
     }
     object Main {
         const val CORE = ":core"
-        const val UI_KIT = ":ui-kit"
+        const val CORE_UI = ":core-ui"
     }
     object Components {
         const val HERO = ":hero-component"
+        const val HERO_IMPL = ":hero-component-impl"
     }
 }

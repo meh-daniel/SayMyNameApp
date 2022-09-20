@@ -1,6 +1,5 @@
 plugins {
     id(Plugins.AGP.LIBRARY)
-    id(Plugins.HILT)
     kotlin(Plugins.Kotlin.ANDROID)
     kotlin(Plugins.Kotlin.KAPT)
 }
@@ -17,6 +16,7 @@ android {
         minSdk =  Config.minSDK
         targetSdk = Config.targetSDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
     compileOptions {
         sourceCompatibility = Config.Options.compileOptions
@@ -24,39 +24,22 @@ android {
     }
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
-        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
-    buildFeatures.viewBinding = true
 }
 
 dependencies {
     implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Main.CORE_UI))
     implementation(project(Modules.Components.HERO))
-    // Hilt
-    implementation(Deps.Hilt.ANDROID)
-    kapt(Deps.Hilt.COMPILER)
-    // Lifecycle
-    implementation(Deps.Lifecycle.VIEW_MODEL)
-    implementation(Deps.Lifecycle.LIVE_DATA)
-    implementation(Deps.Lifecycle.RUNTIME)
-    // Navigation
-    implementation(Deps.Navigation.FRAGMENT)
-    implementation(Deps.Navigation.UI)
     // Coroutines
     implementation(Deps.Coroutines.CORE)
     implementation(Deps.Coroutines.ANDROID)
-    // UI
-    implementation(Deps.UI.CONSTRAINT_LAYOUT)
-    implementation(Deps.UI.RECYCLER_VIEW)
-    implementation(Deps.UI.PROGRESS_BAR)
-    implementation(Deps.UI.FRAGMENT_KTX)
-    implementation(Deps.UI.ACTIVITY_KTX)
+    // Di
+    implementation(Deps.Javax.INJECT)
+    // Network
+    implementation(Deps.Network.RETROFIT2)
+    implementation(Deps.Network.RETROFIT2_GSON)
+    implementation(Deps.Network.LOGGING_INERCEPTOR)
     // Android
-    implementation(Deps.Android.CORE_KTX)
-    implementation(Deps.Android.APPCOMPAT)
-    implementation(Deps.Android.MATERIAL)
-    // Test
     testImplementation(Deps.Test.JUNIT)
     androidTestImplementation(Deps.Test.ANDROID_JUNIT)
     androidTestImplementation(Deps.Test.ESPRESSO)

@@ -6,9 +6,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
 import javax.inject.Singleton
-import meh.daniel.com.hero_component.data.HeroBreakingBadRepositoryImpl
-import meh.daniel.com.hero_component.data.nw.BreakingBadApi
 import meh.daniel.com.hero_component.domain.HeroBreakingBadRepository
+import meh.daniel.com.hero_component_impl.data.HeroBreakingBadRepositoryImpl
+import meh.daniel.com.hero_component_impl.data.nw.BreakingBadApi
 import retrofit2.Retrofit
 
 @Module

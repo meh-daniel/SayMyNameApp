@@ -1,9 +1,11 @@
 package meh.daniel.com.hero_list_feature
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,8 +21,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
 
     private val heroAdapter = HeroAdapter({
         viewModel.routeToDetails(it)
-    },
-        {
+    }, {
         viewModel.routeToNextEpisode()
     })
 
@@ -31,7 +32,6 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
 
     override fun initialize() {
         initHeroRecycler()
-        viewModel.loadHeroList()
     }
 
     override fun setupSubscribers() {
@@ -50,7 +50,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
                     else -> View.GONE
                 }
                 messageTxt.text = when(state) {
-                    is HeroListState.Empty -> getString(meh.daniel.com.ui_kit.R.string.empty)
+                    is HeroListState.Empty -> getString(meh.daniel.com.core_ui.R.string.empty)
                     is HeroListState.Error -> state.error
                     else -> ""
                 }

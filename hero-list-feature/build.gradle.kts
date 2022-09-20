@@ -31,7 +31,7 @@ android {
 
 dependencies {
     implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Main.UI_KIT))
+    implementation(project(Modules.Main.CORE_UI))
     implementation(project(Modules.Components.HERO))
     // Hilt
     implementation(Deps.Hilt.ANDROID)
