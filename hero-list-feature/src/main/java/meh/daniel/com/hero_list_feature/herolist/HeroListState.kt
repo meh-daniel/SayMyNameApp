@@ -1,4 +1,4 @@
-package meh.daniel.com.hero_list_feature
+package meh.daniel.com.hero_list_feature.herolist
 
 sealed interface HeroListState {
     object Loading : HeroListState

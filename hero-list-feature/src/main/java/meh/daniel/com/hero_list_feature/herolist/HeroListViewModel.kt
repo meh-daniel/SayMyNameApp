@@ -1,4 +1,4 @@
-package meh.daniel.com.hero_list_feature
+package meh.daniel.com.hero_list_feature.herolist
 
 import android.accounts.NetworkErrorException
 import android.util.Log
@@ -22,27 +22,24 @@ class HeroListViewModel @Inject constructor(
     private val _heroListState = MutableStateFlow<HeroListState>(HeroListState.Loading)
     val heroListState: Flow<HeroListState> = _heroListState.asStateFlow()
 
-//    private val _listHeroEpisode = MutableStateFlow<List<HeroUI>>(emptyList())
-//    val listHeroEpisode: StateFlow<List<HeroUI>> = _listHeroEpisode.asStateFlow()
-
     private val _numberCurrentEpisode = MutableStateFlow(1)
     val numberCurrentEpisode: StateFlow<Int> = _numberCurrentEpisode.asStateFlow()
 
     init {
-        initHeroListState()
+        loadHeroList()
     }
 
-    private fun initHeroListState() {
+    private fun loadHeroList() {
         viewModelScope.launch(Dispatchers.IO) {
-            val heroUiData: MutableList<HeroUI> = mutableListOf()
             if (_heroListState.value is HeroListState.Loading) {
                 try {
-                    val heroList = repository.getEpisode(numberCurrentEpisode.value).hero
-                    if (heroList.isEmpty()) {
+                    val heroData = repository.getEpisode(numberCurrentEpisode.value)
+                    if (heroData.name.isEmpty()) {
                         _heroListState.value = HeroListState.Empty
                     } else {
-                        heroUiData.add(HeroUI.Header(repository.getEpisode(numberCurrentEpisode.value).name))
-                        heroUiData.addAll(heroList.toUI())
+                        val heroUiData : MutableList<HeroUI> = mutableListOf()
+                        heroUiData.add(HeroUI.Header(heroData.name))
+                        heroUiData.addAll(heroData.hero.toUI())
                         heroUiData.add(HeroUI.Button)
                         _heroListState.value = HeroListState.Loaded(heroUiData)
                     }
@@ -56,14 +53,10 @@ class HeroListViewModel @Inject constructor(
         }
     }
 
-    fun routeToDetails(hero: HeroUI.Hero) {
-        Log.d("xxx", "12312312")
-    }
-
     fun routeToNextEpisode() {
         _numberCurrentEpisode.value++
         _heroListState.value = HeroListState.Loading
-        initHeroListState()
+        loadHeroList()
     }
 
 }

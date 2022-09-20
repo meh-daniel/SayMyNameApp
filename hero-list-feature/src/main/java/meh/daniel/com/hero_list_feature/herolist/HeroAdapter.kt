@@ -1,11 +1,13 @@
-package meh.daniel.com.hero_list_feature
+package meh.daniel.com.hero_list_feature.herolist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import meh.daniel.com.hero_list_feature.R
 import meh.daniel.com.hero_list_feature.databinding.ItemButtonNextBinding
 import meh.daniel.com.hero_list_feature.databinding.ItemHeaderBinding
 import meh.daniel.com.hero_list_feature.databinding.ItemHeroBinding
@@ -34,6 +36,7 @@ class HeroAdapter(
         is HeroUI.Button -> R.layout.item_button_next
         else -> throw Exception("getItemViewType unknown item class exception from position: $position")
     }
+
 }
 
 class HeroViewHolder(
@@ -47,6 +50,7 @@ class HeroViewHolder(
                 .load(item.image)
                 .into(photoHero)
             setListener(item)
+            birthdayHero.text = item.birthdate
         }
     }
     private fun setListener(item: HeroUI.Hero) {

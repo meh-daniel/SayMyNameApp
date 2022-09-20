@@ -6,5 +6,6 @@ data class Hero(
     val birthday: String,
     val image: String,
     val status: String,
-    val nickname: String
+    val nickname: String,
+    val portrayed: String,
 )

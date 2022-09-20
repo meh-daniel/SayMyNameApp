@@ -11,7 +11,20 @@ internal fun List<HeroNW>.toDomain() : List<Hero>{
             birthday = it.birthday,
             image = it.img,
             status = it.status,
-            nickname = it.nickname
+            nickname = it.nickname,
+            portrayed = it.portrayed,
         )
     }
+}
+
+internal fun HeroNW.toDomain(): Hero {
+    return Hero(
+        id = charId,
+        name = name,
+        image = img,
+        birthday = birthday,
+        status = status,
+        nickname = nickname,
+        portrayed = portrayed
+    )
 }

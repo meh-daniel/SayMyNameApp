@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3489583333333333" />
+        <entry key="core-ui/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.279" />
+        <entry key="core-ui/src/main/res/drawable/ic_launcher_background.xml" value="0.279" />
         <entry key="hero-detail-info-feature/src/main/res/layout/activity_main.xml" value="0.3489583333333333" />
+        <entry key="hero-list-feature/src/main/res/layout/fragment_herodetailinfo.xml" value="0.33" />
         <entry key="hero-list-feature/src/main/res/layout/fragment_herolist.xml" value="0.3489583333333333" />
         <entry key="hero-list-feature/src/main/res/layout/item_button.xml" value="0.34791666666666665" />
         <entry key="hero-list-feature/src/main/res/layout/item_button_next.xml" value="0.3435185185185185" />

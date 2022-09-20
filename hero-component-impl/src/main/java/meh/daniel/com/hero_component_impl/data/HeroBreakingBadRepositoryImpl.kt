@@ -37,7 +37,7 @@ class HeroBreakingBadRepositoryImpl(
     }
 
     override suspend fun getById(id: Int): Hero {
-        TODO("Not yet implemented")
+        return api.getById(id)[0].toDomain()
     }
 
     override suspend fun searchByName(name: String): List<Hero> {

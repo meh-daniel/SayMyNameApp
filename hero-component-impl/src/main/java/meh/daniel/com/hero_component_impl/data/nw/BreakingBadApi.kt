@@ -16,4 +16,9 @@ interface BreakingBadApi {
         @Query("name", encoded = true) name: String
     ) : List<HeroNW>
 
+    @GET("characters/{id}")
+    suspend fun getById(
+        @Path("id") id: Int
+    ) : List<HeroNW>
+
 }

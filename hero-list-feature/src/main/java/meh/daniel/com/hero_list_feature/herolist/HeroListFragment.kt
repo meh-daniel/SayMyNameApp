@@ -1,17 +1,18 @@
-package meh.daniel.com.hero_list_feature
+package meh.daniel.com.hero_list_feature.herolist
 
-import android.util.Log
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
+import meh.daniel.com.hero_list_feature.R
 import meh.daniel.com.hero_list_feature.databinding.FragmentHerolistBinding
 
 @AndroidEntryPoint
@@ -20,7 +21,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
     override val viewModel: HeroListViewModel by viewModels()
 
     private val heroAdapter = HeroAdapter({
-        viewModel.routeToDetails(it)
+        routeToDetails(it.id)
     }, {
         viewModel.routeToNextEpisode()
     })
@@ -69,6 +70,12 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
                     false
                 )
         }
+    }
+
+    private fun routeToDetails(id: Int){
+        val bundle = Bundle()
+        bundle.putString("IdHero", id.toString())
+        findNavController().navigate(R.id.action_heroListFragment_to_heroDetailInfoFragment, bundle)
     }
 
 }
