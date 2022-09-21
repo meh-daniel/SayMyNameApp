@@ -24,27 +24,41 @@ class HeroSearchViewModel @Inject constructor(
     private val _state = MutableStateFlow<HeroSearchState>(HeroSearchState.Idle)
     val stateFlow: Flow<HeroSearchState> = _state.asStateFlow()
 
-    private fun loadHeroList() {
+    fun loadHeroList(nameInput: String) {
+        _state.value = HeroSearchState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-//            if (_state.value is HeroSearchState.Loading) {
-//                try {
-//                    val heroData = repository.getEpisode(numberCurrentEpisode.value)
-//                    if (heroData.name.isEmpty()) {
-//                        _state.value = HeroListState.Empty
-//                    } else {
-//                        val heroUiData : MutableList<HeroUI> = mutableListOf()
-//                        heroUiData.add(HeroUI.Header(heroData.name))
-//                        heroUiData.addAll(heroData.hero.toUI())
-//                        heroUiData.add(HeroUI.Button)
-//                        _heroListState.value = HeroListState.Loaded(heroUiData)
-//                    }
-//                } catch (e: Throwable) {
-//                    _heroListState.value = when (e) {
-//                        is NetworkErrorException -> HeroListState.Error(e.message.toString())
-//                        else -> HeroListState.Error(e.message.toString())
-//                    }
-//                }
-//            }
+            if (_state.value is HeroSearchState.Loading) {
+                try {
+                    val heroData = repository.getHeroBy(nameInput)
+                    if (heroData.isEmpty()) {
+                        _state.value = HeroSearchState.Empty
+                    } else {
+                        _state.value = HeroSearchState.Loaded(heroData.toUI())
+                    }
+                } catch (e: Throwable) {
+                    _state.value = when (e) {
+                        is NetworkErrorException -> HeroSearchState.Error(e.message.toString())
+                        else -> HeroSearchState.Error(e.message.toString())
+                    }
+                }
+            }
         }
     }
+
+    fun onSearchButtonPressed(name: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            if(name.isNotEmpty()){
+                sendAction(HeroSearchAction.SearchByName(name))
+            } else {
+                sendAction(HeroSearchAction.ShowError("wtf"))
+            }
+        }
+    }
+
+    private fun sendAction(action: HeroSearchAction){
+        viewModelScope.launch(Dispatchers.Main){
+            _action.send(action)
+        }
+    }
+
 }

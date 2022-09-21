@@ -1,7 +1,8 @@
 package meh.daniel.com.hero_component_impl.data
 
-import meh.daniel.com.hero_component.domain.Episode
-import meh.daniel.com.hero_component.domain.Hero
+import meh.daniel.com.hero_component.domain.model.Episode
+import meh.daniel.com.hero_component.domain.model.Hero
+import meh.daniel.com.hero_component.domain.model.HeroDetails
 import meh.daniel.com.hero_component.domain.HeroRepository
 import meh.daniel.com.hero_component_impl.data.nw.BreakingBadApi
 import meh.daniel.com.hero_component_impl.data.nw.HeroNW
@@ -26,7 +27,7 @@ class HeroRepositoryImpl(
         )
     }
 
-    override suspend fun getHeroBy(id: Int): Hero {
+    override suspend fun getHeroDetailsBy(id: Int): HeroDetails {
         return api.getHeroById(id)[0].toDomain()
     }
 

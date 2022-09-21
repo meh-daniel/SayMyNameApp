@@ -1,6 +1,6 @@
-package meh.daniel.com.hero_component.domain
+package meh.daniel.com.hero_component.domain.model
 
-data class Hero(
+data class HeroDetails(
     val id: Int,
     val name: String,
     val birthday: String,

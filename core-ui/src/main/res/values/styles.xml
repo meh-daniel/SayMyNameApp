@@ -8,4 +8,77 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="item_button_card_view">
+        <item name="android:backgroundTint">#DAD0D0</item>
+    </style>
+    <style name="item_button" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/invisibility</item>
+    </style>
+
+    <style name="item_header_card_view">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="item_header_title" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/invisibility</item>
+    </style>
+
+    <style name="item_hero_name" parent="text_caption">
+        <item name="android:textColor">#8A8686</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/invisibility</item>
+    </style>
+
+    <style name="hero_detail_info_screen">
+        <item name="android:background">#DDCBD1D6</item>
+    </style>
+    <style name="hero_detail_info_menu">
+        <item name="android:background">@color/black</item>
+    </style>
+    <style name="hero_detail_info_name" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="hero_detail_info_layout_detail_text_left" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="hero_detail_info_layout_detail_text_right" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="hero_search_button" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">#DAD0D0</item>
+    </style>
 </resources>

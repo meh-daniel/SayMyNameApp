@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herolist
+package meh.daniel.com.feature_main.herosearch
 
 import meh.daniel.com.hero_component.domain.model.Hero
 
