@@ -1,7 +1,7 @@
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_2.jpg">|<img width="1604" src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/movielist_3.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto3.jpg">|
 
 
 ### Use case: 
@@ -9,4 +9,4 @@
 + Поиск персонажа по имени
 
 ### Архитектура:
-<img src="https://github.com/meh-daniel/MovieUnderBeerLite/blob/dev/photoGitHubReadme/preview.jpg" width="1200" height="600">
+<img src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/demo-arch.png" width="1200" height="600">
