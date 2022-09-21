@@ -26,8 +26,12 @@ class HeroRepositoryImpl(
         )
     }
 
-    override suspend fun getBy(id: Int): Hero {
-        return api.getById(id)[0].toDomain()
+    override suspend fun getHeroBy(id: Int): Hero {
+        return api.getHeroById(id)[0].toDomain()
+    }
+
+    override suspend fun getHeroBy(name: String): List<Hero> {
+        return api.getHeroByName(name.replace(' ', '+', true)).toDomain()
     }
 
 }

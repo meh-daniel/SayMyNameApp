@@ -17,7 +17,7 @@ interface BreakingBadApi {
     ) : List<HeroNW>
 
     @GET("characters/{id}")
-    suspend fun getById(
+    suspend fun getHeroById(
         @Path("id") id: Int
     ) : List<HeroNW>
 
