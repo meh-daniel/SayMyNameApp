@@ -1,8 +1,7 @@
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyNamePhoto1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyNamePhoto2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName3.jpg">|
-
+|<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyNamePhoto2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName3.jpg">|
 
 ### Use case: 
 + Просмотр cписка персонажей по эпизодам сериала breakingBad
