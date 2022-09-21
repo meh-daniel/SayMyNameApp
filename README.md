@@ -1,7 +1,7 @@
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto3.jpg">|
+|<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/sayMyNamePhoto1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName3.jpg">|
 
 
 ### Use case: 
