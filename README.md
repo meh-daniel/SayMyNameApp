@@ -9,4 +9,4 @@
 + Поиск персонажа по имени
 
 ### Архитектура:
-<img src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/demo-arch.png" width="1200" height="600">
+<img src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/demo-arch.png" width="1200" height="400">
