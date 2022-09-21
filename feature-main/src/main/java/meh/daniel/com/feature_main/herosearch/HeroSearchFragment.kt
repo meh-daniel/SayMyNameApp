@@ -48,13 +48,9 @@ class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchB
                 is HeroSearchAction.SearchByName -> {
                     viewModel.loadHeroList(action.name)
                 }
-                is HeroSearchAction.ShowError -> {
-
-                }
             }
         }.launchIn(viewModel.viewModelScope)
     }
-
     private fun setupSubscriberState(){
         viewModel.stateFlow.onEach { state ->
             with(binding){

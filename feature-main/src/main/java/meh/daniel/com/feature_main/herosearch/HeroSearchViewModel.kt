@@ -18,6 +18,7 @@ import meh.daniel.com.hero_component.domain.HeroRepository
 class HeroSearchViewModel @Inject constructor(
     private val repository: HeroRepository
 ) : BaseViewModel(){
+
     private val _action: Channel<HeroSearchAction> = Channel(Channel.BUFFERED)
     var actionFlow: Flow<HeroSearchAction> = _action.receiveAsFlow()
 
@@ -49,8 +50,6 @@ class HeroSearchViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             if(name.isNotEmpty()){
                 sendAction(HeroSearchAction.SearchByName(name))
-            } else {
-                sendAction(HeroSearchAction.ShowError("wtf"))
             }
         }
     }

@@ -38,7 +38,6 @@ class HeroDetailInfoFragment : BaseFragment<HeroDetailInfoViewModel, FragmentHer
             with(binding) {
                 photoNameCV.visibility = if (state is HeroDetailInfoState.Loaded) View.VISIBLE else View.GONE
                 detailInfoCV.visibility = if (state is HeroDetailInfoState.Loaded) View.VISIBLE else View.GONE
-
                 if(state is HeroDetailInfoState.Loaded) setData(state.hero)
                 progressBar.visibility = if (state is HeroDetailInfoState.Loading) View.VISIBLE else View.GONE
                 messageTxt.visibility = when(state) {
