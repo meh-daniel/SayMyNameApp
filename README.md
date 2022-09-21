@@ -8,7 +8,7 @@
 + Просмотр cписка персонажей по эпизодам сериала breakingBad
 + Поиск персонажа по имени
 
-### Архитектура:
+### Монолитная архитектура:
 <img src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/demo-arch.png" width="1200" height="400">
 
 ### Быстрая навигация по проекту по url:
