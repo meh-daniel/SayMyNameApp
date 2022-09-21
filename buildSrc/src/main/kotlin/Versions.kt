@@ -8,7 +8,7 @@ object Versions {
     // Lifecycle
     const val lifecycle = "2.4.0-alpha03"
     // Navigation
-    const val navigation = "2.5.0"
+    const val navigation = "2.5.2"
     // Coroutines
     const val coroutines = "1.6.0"
     // Network

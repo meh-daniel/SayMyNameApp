@@ -21,8 +21,8 @@ object Deps {
     }
 
     object Navigation {
-        const val FRAGMENT = "androidx.navigation:navigation-fragment:${Versions.navigation}"
-        const val UI = "androidx.navigation:navigation-ui:${Versions.navigation}"
+        const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val UI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     }
 
     object Coroutines {

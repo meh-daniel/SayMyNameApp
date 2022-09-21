@@ -26,8 +26,5 @@ include(
     ":core-ui",
     ":hero-component",
     ":hero-component-impl",
-    ":hero-list-feature",
-    ":hero-detail-info-feature"
+    ":feature-main",
 )
-include()
-include()

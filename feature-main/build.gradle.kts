@@ -1,33 +1,22 @@
 plugins {
-    id(Plugins.AGP.APPLICATION)
+    id(Plugins.AGP.LIBRARY)
     id(Plugins.HILT)
     kotlin(Plugins.Kotlin.ANDROID)
     kotlin(Plugins.Kotlin.KAPT)
 }
+
 repositories {
     mavenCentral()
     google()
 }
+
 android {
     compileSdk = Config.compileSdk
     defaultConfig {
-        applicationId = "meh.daniel.com.saymynameapp"
+        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         minSdk =  Config.minSDK
         targetSdk = Config.targetSDK
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = Config.Options.compileOptions
@@ -35,34 +24,15 @@ android {
     }
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
-
         freeCompilerArgs = listOf("-Xjvm-default=compatibility")
-    }
-    kapt {
-        arguments {
-            arg("room.schemaLocation", "$projectDir/schemas",)
-            arg("room.incremental", "true")
-            arg("room.expandProjection", "true")
-        }
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
     buildFeatures.viewBinding = true
 }
 
 dependencies {
-    implementation(project(Modules.Components.HERO))
-    implementation(project(Modules.Components.HERO_IMPL))
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Main.CORE_UI))
-    implementation(project(Modules.Features.MAIN))
-    // Network
-    implementation(Deps.Network.RETROFIT2)
-    implementation(Deps.Network.RETROFIT2_GSON)
-    implementation(Deps.Network.LOGGING_INERCEPTOR)
+    implementation(project(Modules.Components.HERO))
     // Hilt
     implementation(Deps.Hilt.ANDROID)
     kapt(Deps.Hilt.COMPILER)
@@ -82,6 +52,9 @@ dependencies {
     implementation(Deps.UI.PROGRESS_BAR)
     implementation(Deps.UI.FRAGMENT_KTX)
     implementation(Deps.UI.ACTIVITY_KTX)
+    // Glide
+    implementation(Deps.ImageLoad.GLIDE)
+    implementation(Deps.ImageLoad.GLIDE_COMPILER)
     // Android
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)

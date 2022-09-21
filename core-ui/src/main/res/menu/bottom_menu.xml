@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_graph_hero_list"
+        android:icon="@drawable/ic_heroes_24"
+        android:title="@string/herolist"/>
+    <item
+        android:id="@+id/nav_graph_search_hero"
+        android:icon="@drawable/ic_search_24"
+        android:title="@string/search"/>
+</menu>

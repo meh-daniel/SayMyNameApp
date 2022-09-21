@@ -4,4 +4,6 @@
     <string name="nextEpisode">next Episode</string>
     <string name="empty">Empty</string>
     <string name="name">name:</string>
+    <string name="herolist">heroList</string>
+    <string name="search">Search</string>
 </resources>

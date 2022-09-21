@@ -14,10 +14,9 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core-ui" />
+            <option value="$PROJECT_DIR$/feature-main" />
             <option value="$PROJECT_DIR$/hero-component" />
             <option value="$PROJECT_DIR$/hero-component-impl" />
-            <option value="$PROJECT_DIR$/hero-detail-info-feature" />
-            <option value="$PROJECT_DIR$/hero-list-feature" />
           </set>
         </option>
       </GradleProjectSettings>

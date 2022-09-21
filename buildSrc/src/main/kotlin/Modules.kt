@@ -1,7 +1,6 @@
 object Modules {
     object Features {
-        const val HERO_LIST = ":hero-list-feature"
-        const val HERO_DETAIL_INFO = ":hero-detail-info-feature"
+        const val MAIN = ":feature-main"
     }
     object Main {
         const val CORE = ":core"
