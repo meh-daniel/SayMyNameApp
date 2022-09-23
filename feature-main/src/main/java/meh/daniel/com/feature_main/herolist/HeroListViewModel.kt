@@ -38,7 +38,7 @@ class HeroListViewModel @Inject constructor(
                     } else {
                         val heroUiData : MutableList<HeroUI> = mutableListOf()
                         heroUiData.add(HeroUI.Header(heroData.name))
-                        heroUiData.addAll(heroData.hero.toUI())
+                        heroUiData.addAll(heroData.characters.toUI())
                         heroUiData.add(HeroUI.Button)
                         _heroListState.value = HeroListState.Loaded(heroUiData)
                     }

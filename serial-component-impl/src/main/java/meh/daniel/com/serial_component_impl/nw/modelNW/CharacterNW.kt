@@ -1,9 +1,9 @@
-package meh.daniel.com.serial_component_impl.nw
+package meh.daniel.com.serial_component_impl.nw.modelNW
 
 
 import com.google.gson.annotations.SerializedName
 
-data class HeroNW(
+data class CharacterNW(
     @SerializedName("appearance")
     val appearance: List<Int>,
     @SerializedName("better_call_saul_appearance")

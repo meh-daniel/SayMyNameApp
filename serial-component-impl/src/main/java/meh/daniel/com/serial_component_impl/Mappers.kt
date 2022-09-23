@@ -1,12 +1,12 @@
 package meh.daniel.com.serial_component_impl
 
-import meh.daniel.com.serial_component.model.Hero
-import meh.daniel.com.serial_component.model.HeroDetails
-import meh.daniel.com.serial_component_impl.nw.HeroNW
+import meh.daniel.com.serial_component.model.Character
+import meh.daniel.com.serial_component.model.CharacterDetails
+import meh.daniel.com.serial_component_impl.nw.modelNW.CharacterNW
 
-internal fun List<HeroNW>.toDomain() : List<Hero>{
+internal fun List<CharacterNW>.toDomain() : List<Character>{
     return map {
-        meh.daniel.com.serial_component.model.Hero(
+        meh.daniel.com.serial_component.model.Character(
             id = it.charId,
             name = it.name,
             image = it.img,
@@ -15,8 +15,8 @@ internal fun List<HeroNW>.toDomain() : List<Hero>{
     }
 }
 
-internal fun HeroNW.toDomain(): HeroDetails {
-    return HeroDetails(
+internal fun CharacterNW.toDomain(): CharacterDetails {
+    return CharacterDetails(
         id = charId,
         name = name,
         image = img,

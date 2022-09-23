@@ -25,6 +25,18 @@ android {
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
     }
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas",)
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
@@ -35,6 +47,10 @@ dependencies {
     implementation(Deps.Coroutines.ANDROID)
     // Di
     implementation(Deps.Javax.INJECT)
+    // Room
+    implementation(Deps.Room.KTX)
+    implementation(Deps.Room.RUNTIME)
+    kapt(Deps.Room.COMPILER)
     // Network
     implementation(Deps.Network.RETROFIT2)
     implementation(Deps.Network.RETROFIT2_GSON)

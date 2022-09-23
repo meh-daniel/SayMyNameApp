@@ -52,7 +52,7 @@ class HeroDetailInfoFragment : BaseFragment<HeroDetailInfoViewModel, FragmentHer
         }.launchIn(viewModel.viewModelScope)
     }
 
-    private fun setData(hero: meh.daniel.com.serial_component.model.HeroDetails){
+    private fun setData(hero: meh.daniel.com.serial_component.model.CharacterDetails){
         with(binding){
             Glide.with(photoHero)
                 .load(hero.image)

@@ -2,10 +2,10 @@ package meh.daniel.com.serial_component_impl
 
 import meh.daniel.com.serial_component.SerialRepository
 import meh.daniel.com.serial_component.model.Episode
-import meh.daniel.com.serial_component.model.Hero
-import meh.daniel.com.serial_component.model.HeroDetails
+import meh.daniel.com.serial_component.model.Character
+import meh.daniel.com.serial_component.model.CharacterDetails
 import meh.daniel.com.serial_component_impl.nw.BreakingBadApi
-import meh.daniel.com.serial_component_impl.nw.HeroNW
+import meh.daniel.com.serial_component_impl.nw.modelNW.CharacterNW
 
 class SerialRepositoryImpl(
     private val api: BreakingBadApi
@@ -14,7 +14,7 @@ class SerialRepositoryImpl(
     override suspend fun getEpisode(episode: Int): Episode {
         val episodeNW = api.getEpisode(numberEpisode = episode)
         val listCharactersOfEpisode: List<String> = episodeNW[0].characters
-        val listHero = mutableListOf<HeroNW>()
+        val listHero = mutableListOf<CharacterNW>()
 
         for (i in listCharactersOfEpisode.indices){
             val item = correctNameForGet(listCharactersOfEpisode[i])
@@ -27,15 +27,15 @@ class SerialRepositoryImpl(
         return Episode(
             name = episodeNW[0].title,
             numberEpisode = episodeNW[0].episodeId,
-            hero = listHero.toList().toDomain()
+            characters = listHero.toList().toDomain()
         )
     }
 
-    override suspend fun getHeroDetailsBy(id: Int): HeroDetails {
+    override suspend fun getHeroDetailsBy(id: Int): CharacterDetails {
         return api.getHeroById(id)[0].toDomain()
     }
 
-    override suspend fun getHeroBy(name: String): List<Hero> {
+    override suspend fun getHeroBy(name: String): List<Character> {
         return api.getHeroByName(correctNameForGet(name)).toDomain()
     }
 

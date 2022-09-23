@@ -1,4 +1,4 @@
-package meh.daniel.com.serial_component_impl.nw
+package meh.daniel.com.serial_component_impl.nw.modelNW
 
 
 import com.google.gson.annotations.SerializedName

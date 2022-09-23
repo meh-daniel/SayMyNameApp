@@ -6,26 +6,29 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
 import javax.inject.Singleton
+import meh.daniel.com.serial_component.SerialRepository
+import meh.daniel.com.serial_component_impl.SerialRepositoryImpl
+import meh.daniel.com.serial_component_impl.nw.BreakingBadApi
 import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
-class HeroComponentModule {
+class SerialComponentModule {
 
     @Provides
     @Singleton
     fun provideWeatherApi(
         @Named("retrofitBreakingBadBuilder") retrofit: Retrofit
-    ) : meh.daniel.com.serial_component_impl.nw.BreakingBadApi {
-        return retrofit.create(meh.daniel.com.serial_component_impl.nw.BreakingBadApi::class.java)
+    ) : BreakingBadApi {
+        return retrofit.create(BreakingBadApi::class.java)
     }
 
     @Provides
     @Singleton
     fun provideHeroRepository(
-        api: meh.daniel.com.serial_component_impl.nw.BreakingBadApi
-    ) : meh.daniel.com.serial_component.SerialRepository {
-        return meh.daniel.com.serial_component_impl.SerialRepositoryImpl(api)
+        api: BreakingBadApi
+    ) : SerialRepository {
+        return SerialRepositoryImpl(api)
     }
 
 }
