@@ -15,8 +15,8 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/feature-main" />
-            <option value="$PROJECT_DIR$/hero-component" />
-            <option value="$PROJECT_DIR$/hero-component-impl" />
+            <option value="$PROJECT_DIR$/serial-component" />
+            <option value="$PROJECT_DIR$/serial-component-impl" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.core.BaseViewModel
-import meh.daniel.com.hero_component.domain.HeroRepository
+import meh.daniel.com.serial_component.SerialRepository
 
 @HiltViewModel
 class HeroDetailInfoViewModel @Inject constructor(
-    private val repository: HeroRepository
+    private val repository: SerialRepository
 ) : BaseViewModel() {
 
     private val _heroState = MutableStateFlow<HeroDetailInfoState>(HeroDetailInfoState.Loading)

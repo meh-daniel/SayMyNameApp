@@ -24,7 +24,7 @@ include(
     ":app",
     ":core",
     ":core-ui",
-    ":hero-component",
-    ":hero-component-impl",
+    ":serial-component",
+    ":serial-component-impl",
     ":feature-main",
 )

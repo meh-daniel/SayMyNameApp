@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.core.BaseViewModel
-import meh.daniel.com.hero_component.domain.HeroRepository
+import meh.daniel.com.serial_component.SerialRepository
 
 @HiltViewModel
 class HeroSearchViewModel @Inject constructor(
-    private val repository: HeroRepository
+    private val repository: SerialRepository
 ) : BaseViewModel(){
 
     private val _action: Channel<HeroSearchAction> = Channel(Channel.BUFFERED)

@@ -12,8 +12,7 @@ import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
 import meh.daniel.com.feature_main.R
 import meh.daniel.com.feature_main.databinding.FragmentHerodetailinfoBinding
-import meh.daniel.com.hero_component.domain.model.Hero
-import meh.daniel.com.hero_component.domain.model.HeroDetails
+import meh.daniel.com.serial_component.model.HeroDetails
 
 @AndroidEntryPoint
 class HeroDetailInfoFragment : BaseFragment<HeroDetailInfoViewModel, FragmentHerodetailinfoBinding>(R.layout.fragment_herodetailinfo){
@@ -54,7 +53,7 @@ class HeroDetailInfoFragment : BaseFragment<HeroDetailInfoViewModel, FragmentHer
         }.launchIn(viewModel.viewModelScope)
     }
 
-    private fun setData(hero: HeroDetails){
+    private fun setData(hero: meh.daniel.com.serial_component.model.HeroDetails){
         with(binding){
             Glide.with(photoHero)
                 .load(hero.image)
