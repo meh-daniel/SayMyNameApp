@@ -1,7 +1,5 @@
 package meh.daniel.com.feature_main.herosearch
 
-import meh.daniel.com.serial_component.model.Hero
-
 internal fun List<meh.daniel.com.serial_component.model.Hero>.toUI(): List<HeroUI> {
     return map {
         HeroUI.Hero(

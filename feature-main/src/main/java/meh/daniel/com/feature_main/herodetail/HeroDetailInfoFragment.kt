@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
 import meh.daniel.com.feature_main.R
 import meh.daniel.com.feature_main.databinding.FragmentHerodetailinfoBinding
-import meh.daniel.com.serial_component.model.HeroDetails
 
 @AndroidEntryPoint
 class HeroDetailInfoFragment : BaseFragment<HeroDetailInfoViewModel, FragmentHerodetailinfoBinding>(R.layout.fragment_herodetailinfo){
