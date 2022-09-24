@@ -15,6 +15,6 @@
 + App https://github.com/meh-daniel/SayMyNameApp/tree/dev/app/src/main/java/meh/daniel/com/saymynameapp
 + Core https://github.com/meh-daniel/SayMyNameApp/tree/dev/core/src/main/java/meh/daniel/com/core
 + CoreUI https://github.com/meh-daniel/SayMyNameApp/tree/dev/core-ui/src/main/res
-+ Hero-component https://github.com/meh-daniel/SayMyNameApp/tree/dev/hero-component/src/main/java/meh/daniel/com/hero_component/domain
-+ Hero-component-impl https://github.com/meh-daniel/SayMyNameApp/tree/dev/hero-component-impl/src/main/java/meh/daniel/com/hero_component_impl/data
++ Serial-component https://github.com/meh-daniel/SayMyNameApp/tree/dev/serial-component/src/main/java/meh/daniel/com/serial_component
++ Serial-component-impl https://github.com/meh-daniel/SayMyNameApp/tree/dev/serial-component-impl/src/main/java/meh/daniel/com/serial_component_impl
 + Features-main https://github.com/meh-daniel/SayMyNameApp/tree/dev/feature-main/src/main/java/meh/daniel/com/feature_main

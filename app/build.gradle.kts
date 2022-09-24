@@ -66,6 +66,10 @@ dependencies {
     // Hilt
     implementation(Deps.Hilt.ANDROID)
     kapt(Deps.Hilt.COMPILER)
+    // Room
+    implementation(Deps.Room.KTX)
+    implementation(Deps.Room.RUNTIME)
+    kapt(Deps.Room.COMPILER)
     // Lifecycle
     implementation(Deps.Lifecycle.VIEW_MODEL)
     implementation(Deps.Lifecycle.LIVE_DATA)

@@ -14,6 +14,6 @@ import meh.daniel.com.serial_component_impl.db.modelSW.EpisodeSwWithCharacterSW
         EpisodeSwWithCharacterSW::class,
     ]
 )
-abstract class SerialDataBase {
-    abstract fun serialDao(): SerialDao
+interface SerialDataBase {
+    fun serialDao(): SerialDao
 }
