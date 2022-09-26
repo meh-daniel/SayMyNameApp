@@ -8,7 +8,7 @@ import meh.daniel.com.serial_component_impl.db.modelSW.EpisodeSW
 import meh.daniel.com.serial_component_impl.db.modelSW.EpisodeSwWithCharacterSW
 
 @Database(
-    version = 3,
+    version = 4,
     entities = [
         CharacterDetailsSW::class,
         CharacterSW::class,

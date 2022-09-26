@@ -41,9 +41,10 @@ class SerialComponentModule {
     @Provides
     @Singleton
     fun provideSerialRepository(
-        api: BreakingBadApi
+        api: BreakingBadApi,
+        dataBase: SerialDataBase
     ) : SerialRepository {
-        return SerialRepositoryImpl(api)
+        return SerialRepositoryImpl(api, dataBase)
     }
 
 }

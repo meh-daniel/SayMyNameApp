@@ -50,7 +50,7 @@ dependencies {
     // Room
     implementation(Deps.Room.KTX)
     implementation(Deps.Room.RUNTIME)
-    kapt(Deps.Room.COMPILER)
+    annotationProcessor(Deps.Room.COMPILER)
     // Network
     implementation(Deps.Network.RETROFIT2)
     implementation(Deps.Network.RETROFIT2_GSON)
