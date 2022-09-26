@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import org.jetbrains.annotations.NotNull
 
 @Entity(
     tableName = "episode",
@@ -13,10 +14,11 @@ import androidx.room.PrimaryKey
 )
 data class EpisodeSW(
     @PrimaryKey(autoGenerate = true)
+    @NotNull
     val id: Long,
     @ColumnInfo(collate = ColumnInfo.NOCASE)
+    @NotNull
     val name: String,
     @ColumnInfo(name = "number_episode")
     val numberEpisode: Int,
-    val character: List<CharacterSW>,
 )

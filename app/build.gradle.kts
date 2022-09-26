@@ -54,8 +54,8 @@ android {
 }
 
 dependencies {
-    implementation(project(Modules.Components.HERO))
-    implementation(project(Modules.Components.HERO_IMPL))
+    implementation(project(Modules.Components.SERIAL))
+    implementation(project(Modules.Components.SERIAL_IMPL))
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Main.CORE_UI))
     implementation(project(Modules.Features.MAIN))

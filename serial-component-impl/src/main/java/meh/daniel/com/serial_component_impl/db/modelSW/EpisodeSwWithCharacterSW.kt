@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
+import org.jetbrains.annotations.NotNull
 
 @Entity(
     tableName = "episode_with_character",
@@ -32,6 +33,10 @@ import androidx.room.Index
     ],
 )
 data class EpisodeSwWithCharacterSW(
-    @ColumnInfo(name = "episode_id") val episodeId: Long,
-    @ColumnInfo(name = "character_id") val characterId: Long,
+    @ColumnInfo(name = "episode_id")
+    @NotNull
+    val episodeId: Long,
+    @ColumnInfo(name = "character_id")
+    @NotNull
+    val characterId: Long,
 )

@@ -7,7 +7,7 @@ object Modules {
         const val CORE_UI = ":core-ui"
     }
     object Components {
-        const val HERO = ":serial-component"
-        const val HERO_IMPL = ":serial-component-impl"
+        const val SERIAL = ":serial-component"
+        const val SERIAL_IMPL = ":serial-component-impl"
     }
 }

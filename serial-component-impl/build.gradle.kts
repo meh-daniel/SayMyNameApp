@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Components.HERO))
+    implementation(project(Modules.Components.SERIAL))
     // Coroutines
     implementation(Deps.Coroutines.CORE)
     implementation(Deps.Coroutines.ANDROID)
@@ -56,6 +56,9 @@ dependencies {
     implementation(Deps.Network.RETROFIT2_GSON)
     implementation(Deps.Network.LOGGING_INERCEPTOR)
     // Android
+    implementation(Deps.Android.CORE_KTX)
+    implementation(Deps.Android.APPCOMPAT)
+    // Test
     testImplementation(Deps.Test.JUNIT)
     androidTestImplementation(Deps.Test.ANDROID_JUNIT)
     androidTestImplementation(Deps.Test.ESPRESSO)

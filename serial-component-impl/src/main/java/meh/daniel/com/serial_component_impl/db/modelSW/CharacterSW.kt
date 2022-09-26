@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import org.jetbrains.annotations.NotNull
 
 @Entity(
     tableName = "character",
@@ -13,8 +14,10 @@ import androidx.room.PrimaryKey
 )
 data class CharacterSW(
     @PrimaryKey
+    @NotNull
     val id: Long,
     @ColumnInfo(collate = ColumnInfo.NOCASE)
+    @NotNull
     val name: String,
     val image: String,
     val birthday: String,

@@ -14,24 +14,24 @@ import meh.daniel.com.serial_component_impl.db.modelSW.EpisodeSwWithCharacterSW
 interface SerialDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCharacter(character: CharacterSW)
+    suspend fun insertCharacter(character: CharacterSW) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCharacterDetails(characterDetailsSW: CharacterDetailsSW)
+    suspend fun insertCharacterDetails(characterDetailsSW: CharacterDetailsSW) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEpisode(episodeSW: EpisodeSW)
+    suspend fun insertEpisode(episodeSW: EpisodeSW): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertEpisodeWithCharacter(episodeWithCharacter: EpisodeSwWithCharacterSW)
+    suspend fun insertEpisodeWithCharacter(episodeWithCharacter: EpisodeSwWithCharacterSW): Long
 
-    @Query("SELECT * FROM character WHERE name = :name")
-    suspend fun findCharacterByName(name: String) : List<CharacterSW>?
+//    @Query("SELECT * FROM character WHERE name = :name")
+//    suspend fun findCharacterByName(name: String) : List<CharacterSW>
 
-    @Query("SELECT * FROM character_details WHERE id = :id")
-    suspend fun getCharacterDetails(id: Long) : CharacterDetailsSW
+//    @Query("SELECT * FROM character_details WHERE id = :id")
+//    suspend fun getCharacterDetails(id: Long) : CharacterDetailsSW
 
-    @Query("SELECT * FROM character LEFT JOIN episode_with_character ON character.id = episode_id AND character_id = :number")
-    fun getEpisode(number: Long) : Flow<Map<EpisodeSW, EpisodeSwWithCharacterSW>>
+//    @Query("SELECT * FROM character LEFT JOIN episode_with_character ON character.id = episode_id AND character_id = :number")
+//    fun getEpisode(number: Long) : Flow<Map<EpisodeSW, EpisodeSwWithCharacterSW>>
 
 }

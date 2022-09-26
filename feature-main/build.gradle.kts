@@ -32,7 +32,7 @@ android {
 dependencies {
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Main.CORE_UI))
-    implementation(project(Modules.Components.HERO))
+    implementation(project(Modules.Components.SERIAL))
     // Hilt
     implementation(Deps.Hilt.ANDROID)
     kapt(Deps.Hilt.COMPILER)
