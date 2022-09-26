@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull
 data class EpisodeSW(
     @PrimaryKey(autoGenerate = true)
     @NotNull
-    val id: Long,
+    val id: Long= 1,
     @ColumnInfo(collate = ColumnInfo.NOCASE)
     @NotNull
     val name: String,

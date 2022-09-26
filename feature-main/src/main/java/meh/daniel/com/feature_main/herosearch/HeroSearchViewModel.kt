@@ -30,7 +30,7 @@ class HeroSearchViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             if (_state.value is HeroSearchState.Loading) {
                 try {
-                    val heroData = repository.getHeroBy(nameInput)
+                    val heroData = repository.getCharacterBy(nameInput)
                     if (heroData.isEmpty()) {
                         _state.value = HeroSearchState.Empty
                     } else {

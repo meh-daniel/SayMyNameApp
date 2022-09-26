@@ -6,6 +6,6 @@ import meh.daniel.com.serial_component.model.CharacterDetails
 
 interface SerialRepository {
     suspend fun getEpisode(episode: Int): Episode
-    suspend fun getHeroDetailsBy(id: Int): CharacterDetails
-    suspend fun getHeroBy(name: String): List<Character>
+    suspend fun getCharacterDetailsBy(id: Int): CharacterDetails
+    suspend fun getCharacterBy(name: String): List<Character>
 }

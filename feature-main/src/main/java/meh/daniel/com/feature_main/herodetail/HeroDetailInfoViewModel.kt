@@ -24,7 +24,7 @@ class HeroDetailInfoViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             if (_heroState.value is HeroDetailInfoState.Loading) {
                 try {
-                    val heroData = repository.getHeroDetailsBy(id)
+                    val heroData = repository.getCharacterDetailsBy(id)
                     if (heroData.name.isEmpty()) {
                         _heroState.value = HeroDetailInfoState.Empty
                     } else {
