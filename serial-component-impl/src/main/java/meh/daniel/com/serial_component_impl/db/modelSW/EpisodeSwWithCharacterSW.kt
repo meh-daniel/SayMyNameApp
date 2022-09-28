@@ -7,7 +7,7 @@ import androidx.room.Index
 import org.jetbrains.annotations.NotNull
 
 @Entity(
-    tableName = "episode_with_character",
+    tableName = EpisodeSwWithCharacterSW.TABLE_NAME,
     primaryKeys = [
         "episode_id",
         "character_id",
@@ -39,4 +39,8 @@ data class EpisodeSwWithCharacterSW(
     @ColumnInfo(name = "character_id")
     @NotNull
     val characterId: Long,
-)
+)  {
+    companion object {
+        const val TABLE_NAME = "episode_with_character"
+    }
+}

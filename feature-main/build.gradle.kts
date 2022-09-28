@@ -24,7 +24,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
-        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
     buildFeatures.viewBinding = true
 }

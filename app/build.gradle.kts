@@ -35,8 +35,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
-
-        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
     kapt {
         arguments {

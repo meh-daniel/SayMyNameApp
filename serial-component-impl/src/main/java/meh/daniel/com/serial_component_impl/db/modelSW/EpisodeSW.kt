@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
 @Entity(
-    tableName = "episode",
+    tableName = EpisodeSW.TABLE_NAME,
     indices = [
         Index("name", unique = true )
     ]
@@ -21,4 +21,8 @@ data class EpisodeSW(
     val name: String,
     @ColumnInfo(name = "number_episode")
     val numberEpisode: Int,
-)
+) {
+    companion object {
+        const val TABLE_NAME = "episode"
+    }
+}

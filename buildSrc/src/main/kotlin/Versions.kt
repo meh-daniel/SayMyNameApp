@@ -1,14 +1,14 @@
 object Versions {
     // AGP
-    const val AGP = "7.2.2"
+    const val AGP = "7.0.1"
     // Kotlin
-    const val kotlin = "1.7.0"
+    const val kotlin = "1.5.31"
     // Hilt
     const val hilt = "2.43.2"
     // Lifecycle
     const val lifecycle = "2.4.0-alpha03"
     // Navigation
-    const val navigation = "2.5.2"
+    const val navigation = "2.5.0"
     // Coroutines
     const val coroutines = "1.6.0"
     // Network
@@ -25,7 +25,7 @@ object Versions {
     const val androidAppcompat = "1.4.2"
     const val androidMaterial = "1.6.1"
     // Room
-    const val room = "2.4.0-rc01"
+    const val room = "2.3.0"
     // GeoLocation
     const val geoLocation = "20.0.0"
     // Paging

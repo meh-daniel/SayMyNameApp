@@ -1,5 +1,7 @@
 package meh.daniel.com.serial_component_impl
 
+import kotlin.properties.Delegates
+import kotlinx.coroutines.flow.map
 import meh.daniel.com.serial_component.SerialRepository
 import meh.daniel.com.serial_component.model.Episode
 import meh.daniel.com.serial_component.model.Character
@@ -25,14 +27,14 @@ class SerialRepositoryImpl(
             val nameEpisode = episodeNW[0].title
             val numberEpisode = episodeNW[0].episodeId
 
-            dataBase.serialDao().insertEpisode(EpisodeSW(name = nameEpisode, numberEpisode = numberEpisode))
+//            dataBase.serialDao().insertEpisode(EpisodeSW(name = nameEpisode, numberEpisode = numberEpisode))
             for (i in listCharactersOfEpisode.indices){
                 val item = correctNameForGet(listCharactersOfEpisode[i])
                 val itemGet = api.getHeroByName(item)
                 if (itemGet.isNotEmpty()){
                     val item = itemGet[0]
                     listHero.add(item)
-                    dataBase.serialDao().insertEpisodeWithCharacter(item.toSWFromNW(numberEpisode.toLong(), item.charId.toLong()))
+//                    dataBase.serialDao().insertEpisodeWithCharacter(item.toSWFromNW(numberEpisode.toLong(), item.charId.toLong()))
                 }
             }
 
@@ -42,7 +44,29 @@ class SerialRepositoryImpl(
                 characters = listHero.toList().toDomainFromNW()
             )
         } catch (e: Throwable) {
-            val data = dataBase.serialDao().getEpisode(episode.toLong())
+//            var name by Delegates.notNull<String>()
+//            var numberEpisode by Delegates.notNull<Int>()
+//            val listHero = mutableListOf<Int>()
+//
+//            dataBase.serialDao().getEpisode(episode.toLong()).map { entity ->
+//                entity.map {
+//                    name = it.key.name
+//                    numberEpisode = it.key.numberEpisode
+//                    listHero.add(it.value.characterId.toInt())
+//                }
+//            }
+//            Episode(
+//                name = name,
+//                numberEpisode = numberEpisode,
+//                characters = listHero.map {
+//                    Character(
+//                        id = it,
+//                        name = "123",
+//                        image = "null",
+//                        birthday = "123",
+//                    )
+//                }
+//            )
             Episode(
                 "",
                 0,
@@ -56,10 +80,11 @@ class SerialRepositoryImpl(
     override suspend fun getCharacterDetailsBy(id: Int): CharacterDetails {
         return try {
             val details = api.getHeroById(id)[0].toDomainFromNW()
-            dataBase.serialDao().insertCharacterDetails(details.toSWFromDomain())
+//            dataBase.serialDao().insertCharacterDetails(details.toSWFromDomain())
             details
         } catch (e: Throwable) {
-            dataBase.serialDao().getCharacterDetails(id.toLong()).toDomainFromSW()
+//            dataBase.serialDao().getCharacterDetails(id.toLong()).toDomainFromSW()
+            throw Throwable()
         }
     }
 
@@ -72,7 +97,8 @@ class SerialRepositoryImpl(
             }
             character
         } catch (e: Throwable) {
-            dataBase.serialDao().findCharacterByName(name).toDomainFromSW()
+//            dataBase.serialDao().findCharacterByName(name).toDomainFromSW()
+            throw Throwable()
         }
     }
 

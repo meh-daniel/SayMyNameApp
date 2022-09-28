@@ -28,14 +28,11 @@ class SerialComponentModule {
     }
 
     @Provides
+    @Singleton
     fun createSerialDataBase(
         @ApplicationContext context: Context
     ): SerialDataBase {
-        return Room.databaseBuilder(
-            context.applicationContext,
-            SerialDataBase::class.java,
-            "serial_db"
-        ).build()
+        return SerialDataBase.invoke(context)
     }
 
     @Provides
