@@ -5,8 +5,8 @@ plugins {
     kotlin(Plugins.Kotlin.KAPT)
 }
 repositories {
-    mavenCentral()
     google()
+    mavenCentral()
 }
 android {
     compileSdk = Config.compileSdk
@@ -41,11 +41,6 @@ android {
             arg("room.schemaLocation", "$projectDir/schemas",)
             arg("room.incremental", "true")
             arg("room.expandProjection", "true")
-        }
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
     buildFeatures.viewBinding = true
