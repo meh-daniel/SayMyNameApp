@@ -1,13 +1,15 @@
 object Deps {
     object Hilt {
-        const val ANDROID = "com.google.dagger:hilt-android:${Versions.hilt}"
-        const val COMPILER = "com.google.dagger:hilt-compiler:${Versions.hilt}"
+        private const val hilt = "2.43.2"
+        const val ANDROID = "com.google.dagger:hilt-android:${hilt}"
+        const val COMPILER = "com.google.dagger:hilt-compiler:${hilt}"
     }
 
     object Lifecycle {
-        const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-        const val LIVE_DATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
-        const val RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+        private const val lifecycle = "2.4.0-alpha03"
+        const val VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle}"
+        const val LIVE_DATA = "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle}"
+        const val RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle}"
     }
 
     object Javax {
@@ -15,25 +17,30 @@ object Deps {
     }
 
     object Room {
-        const val KTX = "androidx.room:room-ktx:${Versions.room}"
-        const val RUNTIME = "androidx.room:room-runtime:${Versions.room}"
-        const val COMPILER = "androidx.room:room-compiler:${Versions.room}"
+        private const val room = "2.3.0"
+        const val KTX = "androidx.room:room-ktx:${room}"
+        const val RUNTIME = "androidx.room:room-runtime:${room}"
+        const val COMPILER = "androidx.room:room-compiler:${room}"
     }
 
     object Navigation {
-        const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
-        const val UI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+        private const val navigation = "2.5.0"
+        const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${navigation}"
+        const val UI = "androidx.navigation:navigation-ui-ktx:${navigation}"
     }
 
     object Coroutines {
-        const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-        const val ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        private const val coroutines = "1.6.0"
+        const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines}"
+        const val ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutines}"
     }
 
     object Network {
-        const val RETROFIT2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit2}"
-        const val RETROFIT2_GSON = "com.squareup.retrofit2:converter-gson:${Versions.retrofit2}"
-        const val LOGGING_INERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.logging}"
+        private const val retrofit2 = "2.6.2"
+        private const val logging = "4.2.1"
+        const val RETROFIT2 = "com.squareup.retrofit2:retrofit:${retrofit2}"
+        const val RETROFIT2_GSON = "com.squareup.retrofit2:converter-gson:${retrofit2}"
+        const val LOGGING_INERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${logging}"
     }
 
     object ImageLoad {
@@ -42,24 +49,36 @@ object Deps {
     }
 
     object UI {
-        const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-        const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-        const val PROGRESS_BAR = "com.mikhaellopez:circularprogressbar:${Versions.progressbar}"
-        const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
-        const val ACTIVITY_KTX = "androidx.activity:activity-ktx:${Versions.activityKtx}"
+        private const val constraintLayout = "2.1.4"
+        private const val recyclerView = "1.2.1"
+        private const val progressbar = "3.1.0"
+        private const val fragmentKtx = "1.5.0"
+        private const val activityKtx = "1.5.0"
+        const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${constraintLayout}"
+        const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${recyclerView}"
+        const val PROGRESS_BAR = "com.mikhaellopez:circularprogressbar:${progressbar}"
+        const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${fragmentKtx}"
+        const val ACTIVITY_KTX = "androidx.activity:activity-ktx:${activityKtx}"
     }
 
     object Android {
-        const val CORE_KTX = "androidx.core:core-ktx:${Versions.androidCoreKtx}"
-        const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.androidAppcompat}"
-        const val MATERIAL = "com.google.android.material:material:${Versions.androidMaterial}"
+        private const val androidCoreKtx = "1.7.0"
+        private const val androidAppcompat = "1.4.2"
+        private const val androidMaterial = "1.6.1"
+        const val CORE_KTX = "androidx.core:core-ktx:${androidCoreKtx}"
+        const val APPCOMPAT = "androidx.appcompat:appcompat:${androidAppcompat}"
+        const val MATERIAL = "com.google.android.material:material:${androidMaterial}"
     }
 
     object Test {
-        const val JUNIT = "junit:junit:${Versions.testJUnit}"
-        const val ANDROID_JUNIT = "androidx.test.ext:${Versions.testJUnit}"
-        const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.testEspresso}"
-        const val MOCKITO_CORE = "org.mockito:mockito-core:${Versions.mockito}"
-        const val MOCKITO_KOTLIN = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+        private const val testJUnit = "4.+"
+        private const val testAndroidxJUnit = "1.1.2"
+        private const val testEspresso = "3.3.0"
+        private const val mockito = "4.0.0"
+        const val JUNIT = "junit:junit:${testJUnit}"
+        const val ANDROID_JUNIT = "androidx.test.ext:${testJUnit}"
+        const val ESPRESSO = "androidx.test.espresso:espresso-core:${testEspresso}"
+        const val MOCKITO_CORE = "org.mockito:mockito-core:${mockito}"
+        const val MOCKITO_KOTLIN = "org.mockito.kotlin:mockito-kotlin:${mockito}"
     }
 }

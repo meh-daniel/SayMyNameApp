@@ -13,8 +13,8 @@ import meh.daniel.com.serial_component_impl.db.modelSW.EpisodeSwWithCharacterSW
 @Dao
 interface SerialDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCharacter(vararg character: CharacterSW) : List<Long>
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insertCharacter(vararg character: CharacterSW) : List<Long>
 
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)
 //    suspend fun insertCharacterDetails( characterDetailsSW: CharacterDetailsSW) : List<Long>

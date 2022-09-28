@@ -67,13 +67,7 @@ class SerialRepositoryImpl(
 //                    )
 //                }
 //            )
-            Episode(
-                "",
-                0,
-                mutableListOf(
-                    Character(0,"","","")
-                )
-            )
+            throw Throwable()
         }
     }
 
@@ -93,7 +87,7 @@ class SerialRepositoryImpl(
             val character = api.getHeroByName(correctNameForGet(name)).toDomainFromNW()
             for(i in character.indices){
                 val item = character[i]
-                dataBase.serialDao().insertCharacter(item.toSWFromDomain())
+//                dataBase.serialDao().insertCharacter(item.toSWFromDomain())
             }
             character
         } catch (e: Throwable) {
