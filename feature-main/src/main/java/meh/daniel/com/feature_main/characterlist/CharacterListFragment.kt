@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
 import meh.daniel.com.feature_main.R
-import meh.daniel.com.feature_main.databinding.FragmentHerolistBinding
+import meh.daniel.com.feature_main.databinding.FragmentCharacterlistBinding
 
 @AndroidEntryPoint
-class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentHerolistBinding>(R.layout.fragment_characterlist){
+class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentCharacterlistBinding>(R.layout.fragment_characterlist){
 
     override val viewModel: CharacterListViewModel by viewModels()
 
@@ -29,7 +29,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentHerol
     override fun initBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentHerolistBinding = FragmentHerolistBinding.inflate(inflater, container, false)
+    ): FragmentCharacterlistBinding = FragmentCharacterlistBinding.inflate(inflater, container, false)
 
     override fun initialize() {
         initHeroRecycler()
