@@ -4,12 +4,6 @@ plugins {
     kotlin(Plugins.Kotlin.ANDROID)
     kotlin(Plugins.Kotlin.KAPT)
 }
-
-repositories {
-    mavenCentral()
-    google()
-}
-
 android {
     compileSdk = Config.compileSdk
     defaultConfig {
@@ -27,7 +21,6 @@ android {
     }
     buildFeatures.viewBinding = true
 }
-
 dependencies {
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Main.CORE_UI))

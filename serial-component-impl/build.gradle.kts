@@ -3,12 +3,6 @@ plugins {
     kotlin(Plugins.Kotlin.ANDROID)
     kotlin(Plugins.Kotlin.KAPT)
 }
-
-repositories {
-    mavenCentral()
-    google()
-}
-
 android {
     compileSdk = Config.compileSdk
     defaultConfig {
@@ -38,7 +32,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Components.SERIAL))

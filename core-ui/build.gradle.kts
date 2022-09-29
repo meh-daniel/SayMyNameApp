@@ -2,12 +2,6 @@ plugins {
     id(Plugins.AGP.LIBRARY)
     kotlin(Plugins.Kotlin.ANDROID)
 }
-
-repositories {
-    mavenCentral()
-    google()
-}
-
 android {
     compileSdk = Config.compileSdk
     defaultConfig {
@@ -25,7 +19,6 @@ android {
     }
     buildFeatures.viewBinding = true
 }
-
 dependencies {
     // UI
     implementation(Deps.UI.CONSTRAINT_LAYOUT)

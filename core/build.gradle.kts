@@ -3,10 +3,6 @@ plugins {
     kotlin(Plugins.Kotlin.ANDROID)
     kotlin(Plugins.Kotlin.KAPT)
 }
-repositories {
-    mavenCentral()
-    google()
-}
 android {
     compileSdk = Config.compileSdk
 
@@ -36,7 +32,6 @@ android {
     }
     buildFeatures.viewBinding = true
 }
-
 dependencies {
     // Hilt
     implementation(Deps.Hilt.ANDROID)
