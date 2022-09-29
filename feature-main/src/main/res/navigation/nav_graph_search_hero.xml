@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/heroSearchFragment"
-        android:name="meh.daniel.com.feature_main.herosearch.HeroSearchFragment"
+        android:name="meh.daniel.com.feature_main.charactersearch.CharacterSearchFragment"
         android:label="HeroSearchFragment" >
         <action
             android:id="@+id/action_heroSearchFragment_to_heroDetailInfoFragment"
@@ -15,9 +15,9 @@
     </fragment>
     <fragment
         android:id="@+id/heroDetailInfoFragment2"
-        android:name="meh.daniel.com.feature_main.herodetail.HeroDetailInfoFragment"
+        android:name="meh.daniel.com.feature_main.characterdetail.CharacterDetailInfoFragment"
         android:label="fragment_herodetailinfo"
-        tools:layout="@layout/fragment_herodetailinfo">
+        tools:layout="@layout/fragment_characterdetailinfo">
         <argument
             android:name="idHero"
             app:argType="string" />

@@ -74,11 +74,9 @@
     </style>
 
     <style name="hero_search_button" parent="text_caption">
-        <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">cursive</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:backgroundTint">#DAD0D0</item>
     </style>
 </resources>

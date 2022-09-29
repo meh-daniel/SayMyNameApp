@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herosearch
+package meh.daniel.com.feature_main.charactersearch
 
 import android.accounts.NetworkErrorException
 import androidx.lifecycle.viewModelScope
@@ -15,31 +15,31 @@ import meh.daniel.com.core.BaseViewModel
 import meh.daniel.com.serial_component.SerialRepository
 
 @HiltViewModel
-class HeroSearchViewModel @Inject constructor(
+class CharacterSearchViewModel @Inject constructor(
     private val repository: SerialRepository
 ) : BaseViewModel(){
 
-    private val _action: Channel<HeroSearchAction> = Channel(Channel.BUFFERED)
-    var actionFlow: Flow<HeroSearchAction> = _action.receiveAsFlow()
+    private val _action: Channel<CharacterSearchAction> = Channel(Channel.BUFFERED)
+    var actionFlow: Flow<CharacterSearchAction> = _action.receiveAsFlow()
 
-    private val _state = MutableStateFlow<HeroSearchState>(HeroSearchState.Idle)
-    val stateFlow: Flow<HeroSearchState> = _state.asStateFlow()
+    private val _state = MutableStateFlow<CharacterSearchState>(CharacterSearchState.Idle)
+    val stateFlow: Flow<CharacterSearchState> = _state.asStateFlow()
 
     fun loadHeroList(nameInput: String) {
-        _state.value = HeroSearchState.Loading
+        _state.value = CharacterSearchState.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            if (_state.value is HeroSearchState.Loading) {
+            if (_state.value is CharacterSearchState.Loading) {
                 try {
                     val heroData = repository.getCharacterBy(nameInput)
                     if (heroData.isEmpty()) {
-                        _state.value = HeroSearchState.Empty
+                        _state.value = CharacterSearchState.Empty
                     } else {
-                        _state.value = HeroSearchState.Loaded(heroData.toUI())
+                        _state.value = CharacterSearchState.Loaded(heroData.toUI())
                     }
                 } catch (e: Throwable) {
                     _state.value = when (e) {
-                        is NetworkErrorException -> HeroSearchState.Error(e.message.toString())
-                        else -> HeroSearchState.Error(e.message.toString())
+                        is NetworkErrorException -> CharacterSearchState.Error(e.message.toString())
+                        else -> CharacterSearchState.Error(e.message.toString())
                     }
                 }
             }
@@ -49,12 +49,12 @@ class HeroSearchViewModel @Inject constructor(
     fun onSearchButtonPressed(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
             if(name.isNotEmpty()){
-                sendAction(HeroSearchAction.SearchByName(name))
+                sendAction(CharacterSearchAction.SearchByName(name))
             }
         }
     }
 
-    private fun sendAction(action: HeroSearchAction){
+    private fun sendAction(action: CharacterSearchAction){
         viewModelScope.launch(Dispatchers.Main){
             _action.send(action)
         }

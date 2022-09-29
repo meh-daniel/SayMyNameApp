@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herolist
+package meh.daniel.com.feature_main.characterlist
 
 import android.accounts.NetworkErrorException
 import androidx.lifecycle.viewModelScope
@@ -14,12 +14,12 @@ import meh.daniel.com.core.BaseViewModel
 import meh.daniel.com.serial_component.SerialRepository
 
 @HiltViewModel
-class HeroListViewModel @Inject constructor(
+class CharacterListViewModel @Inject constructor(
     private val repository: SerialRepository
 ) : BaseViewModel() {
 
-    private val _heroListState = MutableStateFlow<HeroListState>(HeroListState.Loading)
-    val heroListState: Flow<HeroListState> = _heroListState.asStateFlow()
+    private val _characterListState = MutableStateFlow<CharacterListState>(CharacterListState.Loading)
+    val characterListState: Flow<CharacterListState> = _characterListState.asStateFlow()
 
     private val _numberCurrentEpisode = MutableStateFlow(1)
     val numberCurrentEpisode: StateFlow<Int> = _numberCurrentEpisode.asStateFlow()
@@ -30,22 +30,22 @@ class HeroListViewModel @Inject constructor(
 
     private fun loadHeroList() {
         viewModelScope.launch(Dispatchers.IO) {
-            if (_heroListState.value is HeroListState.Loading) {
+            if (_characterListState.value is CharacterListState.Loading) {
                 try {
                     val heroData = repository.getEpisode(numberCurrentEpisode.value)
                     if (heroData.name.isEmpty()) {
-                        _heroListState.value = HeroListState.Empty
+                        _characterListState.value = CharacterListState.Empty
                     } else {
-                        val heroUiData : MutableList<HeroUI> = mutableListOf()
-                        heroUiData.add(HeroUI.Header(heroData.name))
-                        heroUiData.addAll(heroData.characters.toUI())
-                        heroUiData.add(HeroUI.Button)
-                        _heroListState.value = HeroListState.Loaded(heroUiData)
+                        val characterUiData : MutableList<CharacterUI> = mutableListOf()
+                        characterUiData.add(CharacterUI.Header(heroData.name))
+                        characterUiData.addAll(heroData.characters.toUI())
+                        characterUiData.add(CharacterUI.Button)
+                        _characterListState.value = CharacterListState.Loaded(characterUiData)
                     }
                 } catch (e: Throwable) {
-                    _heroListState.value = when (e) {
-                        is NetworkErrorException -> HeroListState.Error(e.message.toString())
-                        else -> HeroListState.Error(e.message.toString())
+                    _characterListState.value = when (e) {
+                        is NetworkErrorException -> CharacterListState.Error(e.message.toString())
+                        else -> CharacterListState.Error(e.message.toString())
                     }
                 }
             }
@@ -54,7 +54,7 @@ class HeroListViewModel @Inject constructor(
 
     fun routeToNextEpisode() {
         _numberCurrentEpisode.value++
-        _heroListState.value = HeroListState.Loading
+        _characterListState.value = CharacterListState.Loading
         loadHeroList()
     }
 

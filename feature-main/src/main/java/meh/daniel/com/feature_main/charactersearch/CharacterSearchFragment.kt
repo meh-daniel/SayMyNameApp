@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herosearch
+package meh.daniel.com.feature_main.charactersearch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,12 +13,12 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.core.BaseFragment
 import meh.daniel.com.feature_main.R
-import meh.daniel.com.feature_main.databinding.FragmentHerosearchBinding
+import meh.daniel.com.feature_main.databinding.FragmentCharactersearchBinding
 
 @AndroidEntryPoint
-class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchBinding>(R.layout.fragment_herosearch) {
+class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentCharactersearchBinding>(R.layout.fragment_charactersearch) {
 
-    override val viewModel: HeroSearchViewModel by viewModels()
+    override val viewModel: CharacterSearchViewModel by viewModels()
 
     private val heroAdapter = HeroAdapter {
         routeToDetails(it.id)
@@ -27,7 +27,7 @@ class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchB
     override fun initBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentHerosearchBinding = FragmentHerosearchBinding.inflate(inflater, container, false)
+    ): FragmentCharactersearchBinding = FragmentCharactersearchBinding.inflate(inflater, container, false)
 
     override fun setupSubscribers() {
         setupSubscriberState()
@@ -45,7 +45,7 @@ class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchB
     private fun setupSubscriberAction() {
         viewModel.actionFlow.onEach { action ->
             when(action) {
-                is HeroSearchAction.SearchByName -> {
+                is CharacterSearchAction.SearchByName -> {
                     viewModel.loadHeroList(action.name)
                 }
             }
@@ -55,20 +55,20 @@ class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchB
         viewModel.stateFlow.onEach { state ->
             with(binding){
                 heroListByNameMessage.text = when(state) {
-                    is HeroSearchState.Idle -> getString(meh.daniel.com.core_ui.R.string.start)
-                    is HeroSearchState.Empty -> getString(meh.daniel.com.core_ui.R.string.empty)
-                    is HeroSearchState.Error -> state.error
+                    is CharacterSearchState.Idle -> getString(meh.daniel.com.core_ui.R.string.start)
+                    is CharacterSearchState.Empty -> getString(meh.daniel.com.core_ui.R.string.empty)
+                    is CharacterSearchState.Error -> state.error
                     else -> ""
                 }
                 heroListByNameMessage.visibility = when(state) {
-                    is HeroSearchState.Idle -> View.VISIBLE
-                    is HeroSearchState.Empty -> View.VISIBLE
-                    is HeroSearchState.Error -> View.VISIBLE
+                    is CharacterSearchState.Idle -> View.VISIBLE
+                    is CharacterSearchState.Empty -> View.VISIBLE
+                    is CharacterSearchState.Error -> View.VISIBLE
                     else -> View.GONE
                 }
-                heroListByNameProgBar.visibility = if(state is HeroSearchState.Loading) View.VISIBLE else View.GONE
-                heroListByNameRv.visibility = if(state is HeroSearchState.Loaded) View.VISIBLE else View.GONE
-                if(state is HeroSearchState.Loaded) heroAdapter.submitList(state.heroes) else heroAdapter.submitList(emptyList())
+                heroListByNameProgBar.visibility = if(state is CharacterSearchState.Loading) View.VISIBLE else View.GONE
+                heroListByNameRv.visibility = if(state is CharacterSearchState.Loaded) View.VISIBLE else View.GONE
+                if(state is CharacterSearchState.Loaded) heroAdapter.submitList(state.character) else heroAdapter.submitList(emptyList())
             }
         }.launchIn(viewModel.viewModelScope)
     }
@@ -86,7 +86,7 @@ class HeroSearchFragment : BaseFragment<HeroSearchViewModel, FragmentHerosearchB
             heroListByNameRv.adapter = heroAdapter
             heroListByNameRv.layoutManager =
                 LinearLayoutManager(
-                    this@HeroSearchFragment.context,
+                    this@CharacterSearchFragment.context,
                     LinearLayoutManager.VERTICAL,
                     false
                 )

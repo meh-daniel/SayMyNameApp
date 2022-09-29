@@ -1,10 +1,10 @@
-package meh.daniel.com.feature_main.herosearch
+package meh.daniel.com.feature_main.charactersearch
 
 import meh.daniel.com.serial_component.model.Character
 
-internal fun List<Character>.toUI(): List<HeroUI> {
+internal fun List<Character>.toUI(): List<CharacterUI> {
     return map {
-        HeroUI.Hero(
+        CharacterUI.Character(
             id = it.id,
             name = it.name,
             image = it.image,

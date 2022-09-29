@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herolist
+package meh.daniel.com.feature_main.characterlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,40 +8,40 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import meh.daniel.com.feature_main.R
 import meh.daniel.com.feature_main.databinding.ItemButtonNextBinding
+import meh.daniel.com.feature_main.databinding.ItemCharacterBinding
 import meh.daniel.com.feature_main.databinding.ItemHeaderBinding
-import meh.daniel.com.feature_main.databinding.ItemHeroBinding
 
 class HeroAdapter(
-    private val onClickHero: (hero: HeroUI.Hero) -> Unit,
+    private val onClickHero: (hero: CharacterUI.Character) -> Unit,
     private val onClickButton: () -> Unit
-) : ListAdapter<HeroUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
+) : ListAdapter<CharacterUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when(viewType) {
-        R.layout.item_hero -> HeroViewHolder.from(parent, onClickHero)
+        R.layout.item_character -> HeroViewHolder.from(parent, onClickHero)
         R.layout.item_header -> HeaderViewHolder.from(parent)
         R.layout.item_button_next -> ButtonNextViewHolder.from(parent, onClickButton)
         else -> throw Throwable("onCreateViewHolder exception - unknown view type by name: $viewType")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when(holder) {
-        is HeroViewHolder -> holder.bind(item = getItem(position) as HeroUI.Hero)
-        is HeaderViewHolder -> holder.bind(item = getItem(position) as HeroUI.Header)
-        is ButtonNextViewHolder -> holder.bind(item = getItem(position) as HeroUI.Button)
+        is HeroViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Character)
+        is HeaderViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Header)
+        is ButtonNextViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Button)
         else -> throw Throwable("onBindViewHolder exception - unknown holder of view by name ${holder.itemView.id}")
     }
 
     override fun getItemViewType(position: Int): Int = when(getItem(position)) {
-        is HeroUI.Hero -> R.layout.item_hero
-        is HeroUI.Header -> R.layout.item_header
-        is HeroUI.Button -> R.layout.item_button_next
+        is CharacterUI.Character -> R.layout.item_character
+        is CharacterUI.Header -> R.layout.item_header
+        is CharacterUI.Button -> R.layout.item_button_next
         else -> throw Exception("getItemViewType unknown item class exception from position: $position")
     }
 }
 
 class HeroViewHolder(
-    private val binding: ItemHeroBinding,
-    private val onClickItem: (hero: HeroUI.Hero) -> Unit
+    private val binding: ItemCharacterBinding,
+    private val onClickItem: (hero: CharacterUI.Character) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: HeroUI.Hero){
+    fun bind(item: CharacterUI.Character){
         with(binding){
             nameHero.text = item.name
             Glide.with(photoHero)
@@ -51,22 +51,22 @@ class HeroViewHolder(
             birthdayHero.text = item.birthdate
         }
     }
-    private fun setListener(item: HeroUI.Hero) {
+    private fun setListener(item: CharacterUI.Character) {
         binding.itemHeroRoot.setOnClickListener{
             onClickItem(item)
         }
     }
     companion object {
-        fun from(parent: ViewGroup, onClickItem: (hero: HeroUI.Hero) -> Unit): RecyclerView.ViewHolder {
+        fun from(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
-            val binding = ItemHeroBinding.inflate(layoutInflater, parent, false)
+            val binding = ItemCharacterBinding.inflate(layoutInflater, parent, false)
             return HeroViewHolder(binding, onClickItem)
         }
     }
 }
 
 class HeaderViewHolder(private val binding: ItemHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: HeroUI.Header) {
+    fun bind(item: CharacterUI.Header) {
         with(binding){
             headerTitle.text = item.title
         }
@@ -84,10 +84,10 @@ class ButtonNextViewHolder(
     private val binding: ItemButtonNextBinding,
     private val onClickButton: () -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: HeroUI.Button){
-        setListener(item)
+    fun bind(item: CharacterUI.Button){
+        setListener()
     }
-    private fun setListener(item: HeroUI.Button) {
+    private fun setListener() {
         binding.nextBtn.setOnClickListener {
             onClickButton()
         }
@@ -101,7 +101,7 @@ class ButtonNextViewHolder(
     }
 }
 
-class HeroUIDiffUtil: DiffUtil.ItemCallback<HeroUI>() {
-    override fun areItemsTheSame(oldItem: HeroUI, newItem: HeroUI): Boolean = oldItem == newItem
-    override fun areContentsTheSame(oldItem: HeroUI, newItem: HeroUI): Boolean = oldItem == newItem
+class HeroUIDiffUtil: DiffUtil.ItemCallback<CharacterUI>() {
+    override fun areItemsTheSame(oldItem: CharacterUI, newItem: CharacterUI): Boolean = oldItem == newItem
+    override fun areContentsTheSame(oldItem: CharacterUI, newItem: CharacterUI): Boolean = oldItem == newItem
 }

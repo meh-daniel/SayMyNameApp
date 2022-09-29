@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herodetail
+package meh.daniel.com.feature_main.characterdetail
 
 import android.accounts.NetworkErrorException
 import androidx.lifecycle.viewModelScope
@@ -13,27 +13,27 @@ import meh.daniel.com.core.BaseViewModel
 import meh.daniel.com.serial_component.SerialRepository
 
 @HiltViewModel
-class HeroDetailInfoViewModel @Inject constructor(
+class CharacterDetailInfoViewModel @Inject constructor(
     private val repository: SerialRepository
 ) : BaseViewModel() {
 
-    private val _heroState = MutableStateFlow<HeroDetailInfoState>(HeroDetailInfoState.Loading)
-    val heroState: Flow<HeroDetailInfoState> = _heroState.asStateFlow()
+    private val _heroState = MutableStateFlow<CharacterDetailInfoState>(CharacterDetailInfoState.Loading)
+    val heroState: Flow<CharacterDetailInfoState> = _heroState.asStateFlow()
 
     fun loadData(id: Int){
         viewModelScope.launch(Dispatchers.IO) {
-            if (_heroState.value is HeroDetailInfoState.Loading) {
+            if (_heroState.value is CharacterDetailInfoState.Loading) {
                 try {
                     val heroData = repository.getCharacterDetailsBy(id)
                     if (heroData.name.isEmpty()) {
-                        _heroState.value = HeroDetailInfoState.Empty
+                        _heroState.value = CharacterDetailInfoState.Empty
                     } else {
-                        _heroState.value = HeroDetailInfoState.Loaded(heroData)
+                        _heroState.value = CharacterDetailInfoState.Loaded(heroData)
                     }
                 } catch (e: Throwable) {
                     _heroState.value = when (e) {
-                        is NetworkErrorException -> HeroDetailInfoState.Error(e.message.toString())
-                        else -> HeroDetailInfoState.Error(e.message.toString())
+                        is NetworkErrorException -> CharacterDetailInfoState.Error(e.message.toString())
+                        else -> CharacterDetailInfoState.Error(e.message.toString())
                     }
                 }
             }

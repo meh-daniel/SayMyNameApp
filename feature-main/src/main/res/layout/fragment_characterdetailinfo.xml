@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".herodetail.HeroDetailInfoFragment"
+    tools:context=".characterdetail.CharacterDetailInfoFragment"
     style="@style/hero_detail_info_screen">
 
     <androidx.cardview.widget.CardView

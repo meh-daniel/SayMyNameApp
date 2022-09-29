@@ -1,4 +1,4 @@
-package meh.daniel.com.feature_main.herolist
+package meh.daniel.com.feature_main.characterlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,9 +16,9 @@ import meh.daniel.com.feature_main.R
 import meh.daniel.com.feature_main.databinding.FragmentHerolistBinding
 
 @AndroidEntryPoint
-class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding>(R.layout.fragment_herolist){
+class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentHerolistBinding>(R.layout.fragment_characterlist){
 
-    override val viewModel: HeroListViewModel by viewModels()
+    override val viewModel: CharacterListViewModel by viewModels()
 
     private val heroAdapter = HeroAdapter({
         routeToDetails(it.id)
@@ -40,19 +40,19 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
     }
 
     private fun setupHeroListState() {
-        viewModel.heroListState.onEach { state ->
+        viewModel.characterListState.onEach { state ->
             with(binding) {
-                heroListRc.visibility = if(state is HeroListState.Loaded) View.VISIBLE else View.GONE
-                if(state is HeroListState.Loaded) heroAdapter.submitList(state.repos)
-                progressBar.visibility = if (state is HeroListState.Loading) View.VISIBLE else View.GONE
+                heroListRc.visibility = if(state is CharacterListState.Loaded) View.VISIBLE else View.GONE
+                if(state is CharacterListState.Loaded) heroAdapter.submitList(state.repos)
+                progressBar.visibility = if (state is CharacterListState.Loading) View.VISIBLE else View.GONE
                 messageTxt.visibility = when(state) {
-                    is HeroListState.Empty -> View.VISIBLE
-                    is HeroListState.Error -> View.VISIBLE
+                    is CharacterListState.Empty -> View.VISIBLE
+                    is CharacterListState.Error -> View.VISIBLE
                     else -> View.GONE
                 }
                 messageTxt.text = when(state) {
-                    is HeroListState.Empty -> getString(meh.daniel.com.core_ui.R.string.empty)
-                    is HeroListState.Error -> state.error
+                    is CharacterListState.Empty -> getString(meh.daniel.com.core_ui.R.string.empty)
+                    is CharacterListState.Error -> state.error
                     else -> ""
                 }
 
@@ -65,7 +65,7 @@ class HeroListFragment : BaseFragment<HeroListViewModel, FragmentHerolistBinding
             heroListRc.adapter = heroAdapter
             heroListRc.layoutManager =
                 LinearLayoutManager(
-                    this@HeroListFragment.context,
+                    this@CharacterListFragment.context,
                     LinearLayoutManager.VERTICAL,
                     false
                 )
