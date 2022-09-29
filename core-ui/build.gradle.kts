@@ -20,17 +20,14 @@ android {
     buildFeatures.viewBinding = true
 }
 dependencies {
-    // UI
     implementation(Deps.UI.CONSTRAINT_LAYOUT)
     implementation(Deps.UI.RECYCLER_VIEW)
     implementation(Deps.UI.PROGRESS_BAR)
     implementation(Deps.UI.FRAGMENT_KTX)
     implementation(Deps.UI.ACTIVITY_KTX)
-    // Android
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)
     implementation(Deps.Android.MATERIAL)
-    // Test
     testImplementation(Deps.Test.JUNIT)
     androidTestImplementation(Deps.Test.ANDROID_JUNIT)
     androidTestImplementation(Deps.Test.ESPRESSO)

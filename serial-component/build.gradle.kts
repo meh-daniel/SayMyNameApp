@@ -7,8 +7,6 @@ java {
     targetCompatibility = Config.Options.compileOptions
 }
 dependencies {
-    // Coroutines
     implementation(Deps.Coroutines.CORE)
-    // Di
     implementation(Deps.Javax.INJECT)
 }

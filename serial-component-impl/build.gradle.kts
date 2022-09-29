@@ -35,23 +35,17 @@ android {
 dependencies {
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Components.SERIAL))
-    // Coroutines
     implementation(Deps.Coroutines.CORE)
     implementation(Deps.Coroutines.ANDROID)
-    // Di
     implementation(Deps.Javax.INJECT)
-    // Room
     implementation(Deps.Room.KTX)
     implementation(Deps.Room.RUNTIME)
     kapt(Deps.Room.COMPILER)
-    // Network
     implementation(Deps.Network.RETROFIT2)
     implementation(Deps.Network.RETROFIT2_GSON)
     implementation(Deps.Network.LOGGING_INERCEPTOR)
-    // Android
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)
-    // Test
     testImplementation(Deps.Test.JUNIT)
     androidTestImplementation(Deps.Test.ANDROID_JUNIT)
     androidTestImplementation(Deps.Test.ESPRESSO)

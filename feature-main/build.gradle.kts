@@ -25,33 +25,25 @@ dependencies {
     implementation(project(Modules.Main.CORE))
     implementation(project(Modules.Main.CORE_UI))
     implementation(project(Modules.Components.SERIAL))
-    // Hilt
     implementation(Deps.Hilt.ANDROID)
     kapt(Deps.Hilt.COMPILER)
-    // Lifecycle
     implementation(Deps.Lifecycle.VIEW_MODEL)
     implementation(Deps.Lifecycle.LIVE_DATA)
     implementation(Deps.Lifecycle.RUNTIME)
-    // Navigation
     implementation(Deps.Navigation.FRAGMENT)
     implementation(Deps.Navigation.UI)
-    // Coroutines
     implementation(Deps.Coroutines.CORE)
     implementation(Deps.Coroutines.ANDROID)
-    // UI
     implementation(Deps.UI.CONSTRAINT_LAYOUT)
     implementation(Deps.UI.RECYCLER_VIEW)
     implementation(Deps.UI.PROGRESS_BAR)
     implementation(Deps.UI.FRAGMENT_KTX)
     implementation(Deps.UI.ACTIVITY_KTX)
-    // Glide
     implementation(Deps.ImageLoad.GLIDE)
     implementation(Deps.ImageLoad.GLIDE_COMPILER)
-    // Android
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)
     implementation(Deps.Android.MATERIAL)
-    // Test
     testImplementation(Deps.Test.JUNIT)
     androidTestImplementation(Deps.Test.ANDROID_JUNIT)
     androidTestImplementation(Deps.Test.ESPRESSO)
