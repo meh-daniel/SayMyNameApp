@@ -8,9 +8,6 @@
 + Просмотр детальной информации о персонаже
 + Поиск персонажа по имени
 
-### Монолитная архитектура:
-<img src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/demo-arch.png" width="1200" height="400">
-
 ### Быстрая навигация по проекту по url:
 + App https://github.com/meh-daniel/SayMyNameApp/tree/dev/app/src/main/java/meh/daniel/com/saymynameapp
 + Core https://github.com/meh-daniel/SayMyNameApp/tree/dev/core/src/main/java/meh/daniel/com/core
