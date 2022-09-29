@@ -42,15 +42,13 @@ android {
     buildFeatures.viewBinding = true
 }
 dependencies {
-    implementation(project(Modules.Components.SERIAL))
-    implementation(project(Modules.Components.SERIAL_IMPL))
-    implementation(project(Modules.Main.CORE))
-    implementation(project(Modules.Main.CORE_UI))
-    implementation(project(Modules.Features.MAIN))
     implementation(Deps.Network.RETROFIT2)
     implementation(Deps.Network.RETROFIT2_GSON)
     implementation(Deps.Network.LOGGING_INERCEPTOR)
     implementation(Deps.Hilt.ANDROID)
+    implementation(Deps.Room.KTX)
+    implementation(Deps.Room.RUNTIME)
+    kapt(Deps.Room.COMPILER)
     kapt(Deps.Hilt.COMPILER)
     implementation(Deps.Lifecycle.VIEW_MODEL)
     implementation(Deps.Lifecycle.LIVE_DATA)
@@ -64,6 +62,8 @@ dependencies {
     implementation(Deps.UI.PROGRESS_BAR)
     implementation(Deps.UI.FRAGMENT_KTX)
     implementation(Deps.UI.ACTIVITY_KTX)
+    implementation(Deps.ImageLoad.GLIDE)
+    implementation(Deps.ImageLoad.GLIDE_COMPILER)
     implementation(Deps.Android.CORE_KTX)
     implementation(Deps.Android.APPCOMPAT)
     implementation(Deps.Android.MATERIAL)
