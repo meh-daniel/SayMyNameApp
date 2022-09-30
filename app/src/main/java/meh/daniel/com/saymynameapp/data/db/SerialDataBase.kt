@@ -7,21 +7,19 @@ import androidx.room.RoomDatabase
 import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterDetailsSW
 import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
 import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSwWithCharacterSW
 
 @Database(
     entities = arrayOf(
         CharacterDetailsSW::class,
         CharacterSW::class,
         EpisodeSW::class,
-        EpisodeSwWithCharacterSW::class,
     ),
     version = SerialDataBase.DB_VERSION,
     exportSchema = false,
 )
 abstract class SerialDataBase: RoomDatabase() {
     companion object {
-        const val DB_VERSION = 6
+        const val DB_VERSION = 7
         private const val DB_NAME = "serial.db"
 
         @Volatile private var instance : SerialDataBase? = null

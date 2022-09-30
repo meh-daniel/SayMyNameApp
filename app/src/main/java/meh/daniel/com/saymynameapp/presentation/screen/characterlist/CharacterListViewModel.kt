@@ -46,7 +46,6 @@ class CharacterListViewModel @Inject constructor(
                     }
                 } catch (e: Throwable) {
                     _characterListState.value = when (e) {
-                        is NetworkErrorException -> CharacterListState.Error(e.message.toString())
                         else -> CharacterListState.Error(e.message.toString())
                     }
                 }

@@ -1,5 +1,7 @@
 package meh.daniel.com.saymynameapp.data
 
+import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterDetailsSW
+import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
 import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
 import meh.daniel.com.saymynameapp.domain.model.Character
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
@@ -25,4 +27,50 @@ internal fun CharacterNW.toDomainFromNW(): CharacterDetails {
         nickname = nickname,
         portrayed = portrayed,
     )
+}
+
+internal fun List<CharacterSW>.toDomainCharacterFromSW(): List<Character> {
+    return map {
+        Character(
+            id = it.id.toInt(),
+            name = it.name,
+            image = it.image,
+            birthday = it.birthday,
+        )
+    }
+}
+
+internal fun CharacterDetailsSW.toDomainCharacterDetailFromSW(): CharacterDetails {
+    return CharacterDetails(
+        id = id.toInt(),
+        name = name,
+        birthday = birthday,
+        image = image,
+        status = status,
+        nickname = nickname,
+        portrayed = portrayed,
+    )
+}
+
+internal fun CharacterNW.toDetailSWFromNW(): CharacterDetailsSW {
+    return CharacterDetailsSW(
+        id = charId.toLong(),
+        name = name,
+        birthday = birthday,
+        image = img,
+        status = status,
+        nickname = nickname,
+        portrayed = portrayed,
+    )
+}
+
+internal fun List<CharacterNW>.toSWCharacterFromNW(): List<CharacterSW> {
+    return map {
+        CharacterSW(
+            id = it.charId.toLong(),
+            name = it.name,
+            image = it.img,
+            birthday = it.birthday,
+        )
+    }
 }

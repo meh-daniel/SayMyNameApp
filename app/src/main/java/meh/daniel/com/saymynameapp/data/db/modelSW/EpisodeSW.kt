@@ -14,13 +14,15 @@ import org.jetbrains.annotations.NotNull
 )
 data class EpisodeSW(
     @PrimaryKey(autoGenerate = true)
-    @NotNull
-    val id: Long= 1,
+    @ColumnInfo(name = "id")
+    val id: Long = 0,
     @ColumnInfo(collate = ColumnInfo.NOCASE)
     @NotNull
     val name: String,
     @ColumnInfo(name = "number_episode")
     val numberEpisode: Int,
+    @ColumnInfo(name = "list_id_character")
+    val listIdCharacter: String
 ) {
     companion object {
         const val TABLE_NAME = "episode"

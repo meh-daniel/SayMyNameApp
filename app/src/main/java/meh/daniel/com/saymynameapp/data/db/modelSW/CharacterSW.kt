@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull
 )
 data class CharacterSW(
     @PrimaryKey
-    @NotNull
+    @ColumnInfo(name = "id")
     val id: Long,
     @ColumnInfo(collate = ColumnInfo.NOCASE)
     @NotNull
