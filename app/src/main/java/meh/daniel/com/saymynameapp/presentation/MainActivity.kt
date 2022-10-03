@@ -1,4 +1,4 @@
-package meh.daniel.com.saymynameapp
+package meh.daniel.com.saymynameapp.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import meh.daniel.com.saymynameapp.R
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main){
