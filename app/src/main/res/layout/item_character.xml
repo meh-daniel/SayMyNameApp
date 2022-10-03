@@ -36,7 +36,7 @@
             app:layout_constraintStart_toEndOf="@+id/photoHero"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="name name name"
-            style="@style/item_hero_name"/>
+            style="@style/item_character_name"/>
         <TextView
             android:id="@+id/birthdayHero"
             android:layout_width="0dp"

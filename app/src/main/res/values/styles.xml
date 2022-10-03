@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="item_hero" parent="text_caption">
+    <style name="item_character" parent="text_caption">
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:maxLines">2</item>
@@ -32,7 +32,7 @@
         <item name="android:backgroundTint">@color/invisibility</item>
     </style>
 
-    <style name="item_hero_name" parent="text_caption">
+    <style name="item_character_name" parent="text_caption">
         <item name="android:textColor">@color/item_hero_name_color</item>
         <item name="android:fontFamily">cursive</item>
         <item name="android:textSize">20sp</item>
@@ -42,7 +42,13 @@
         <item name="android:backgroundTint">@color/invisibility</item>
     </style>
 
-    <style name="hero_detail_info_screen">
+    <style name="character_detail_info_screen">
+        <item name="android:background">@color/color_for_detail</item>
+    </style>
+    <style name="character_list_screen">
+        <item name="android:background">@color/color_for_detail</item>
+    </style>
+    <style name="character_search_screen">
         <item name="android:background">@color/color_for_detail</item>
     </style>
     <style name="hero_detail_info_menu">

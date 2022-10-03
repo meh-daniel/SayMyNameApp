@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/character_search_screen"
     tools:context="presentation.screens.charactersearch.CharacterSearchFragment">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout"
