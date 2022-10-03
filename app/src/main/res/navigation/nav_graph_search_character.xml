@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_search_hero"
     android:label="@string/detail_character"
-    app:startDestination="@id/characterListFragment">
+    app:startDestination="@id/characterSearch">
 
     <fragment
-        android:id="@+id/characterListFragment"
-        android:name="meh.daniel.com.saymynameapp.presentation.screens.characterlist.CharacterListFragment"
-        android:label="CharacterListFragment"
+        android:id="@+id/characterSearch"
+        android:name="meh.daniel.com.saymynameapp.presentation.screens.charactersearch.CharacterSearchFragment"
+        android:label="@string/search_character"
         tools:layout="@layout/fragment_charactersearch">
         <action
             android:id="@+id/action_heroSearchFragment_to_heroDetailInfoFragment"

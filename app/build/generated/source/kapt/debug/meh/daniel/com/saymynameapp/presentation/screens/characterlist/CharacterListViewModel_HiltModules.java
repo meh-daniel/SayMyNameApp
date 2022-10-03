@@ -31,7 +31,7 @@ public final class CharacterListViewModel_HiltModules {
 
     @Binds
     @IntoMap
-    @StringKey("meh.daniel.com.saymynameapp.presentation.screen.characterlist.CharacterListViewModel")
+    @StringKey("meh.daniel.com.saymynameapp.presentation.screens.characterlist.CharacterListViewModel")
     @HiltViewModelMap
     public abstract ViewModel binds(CharacterListViewModel vm);
   }
@@ -46,7 +46,7 @@ public final class CharacterListViewModel_HiltModules {
     @IntoSet
     @HiltViewModelMap.KeySet
     public static String provide() {
-      return "meh.daniel.com.saymynameapp.presentation.screen.characterlist.CharacterListViewModel";
+      return "meh.daniel.com.saymynameapp.presentation.screens.characterlist.CharacterListViewModel";
     }
   }
 }

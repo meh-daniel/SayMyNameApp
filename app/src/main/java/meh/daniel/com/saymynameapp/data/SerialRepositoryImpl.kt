@@ -76,7 +76,8 @@ class SerialRepositoryImpl(
     }
     override suspend fun getCharacterBy(name: String): List<Character> {
         return try {
-            dataBase.serialDao().findCharacterByName("$name%").toDomainCharacterFromSW()
+            val listCharacter = dataBase.serialDao().findCharacterByName("$name%").toDomainCharacterFromSW()
+            if(listCharacter.isEmpty()) listCharacter else throw Throwable("isEmptyListCharacter")
         } catch (e: Throwable) {
             val character = api.getHeroByName(correctNameForGetHttp(name))
             dataBase.serialDao().insertCharacter(character.toList().toSWCharacterFromNW())
