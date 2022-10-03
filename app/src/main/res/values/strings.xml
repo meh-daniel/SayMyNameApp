@@ -11,4 +11,7 @@
     <string name="nick_name">Nick Name</string>
     <string name="status">status</string>
     <string name="enter_name">enter name</string>
+    <string name="list_characters">List characters</string>
+    <string name="detail_character">Detail character</string>
+    <string name="search_character">Search character</string>
 </resources>

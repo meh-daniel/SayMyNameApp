@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_search_hero"
+    android:label="@string/detail_character"
+    app:startDestination="@id/characterListFragment">
+
+    <fragment
+        android:id="@+id/characterListFragment"
+        android:name="meh.daniel.com.saymynameapp.presentation.screens.characterlist.CharacterListFragment"
+        android:label="CharacterListFragment"
+        tools:layout="@layout/fragment_charactersearch">
+        <action
+            android:id="@+id/action_heroSearchFragment_to_heroDetailInfoFragment"
+            app:destination="@id/heroDetailInfoFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/heroDetailInfoFragment2"
+        android:name="meh.daniel.com.saymynameapp.presentation.screens.characterdetail.CharacterDetailInfoFragment"
+        android:label="fragment_herodetailinfo"
+        tools:layout="@layout/fragment_characterdetailinfo">
+        <argument
+            android:name="idHero"
+            app:argType="string" />
+    </fragment>
+</navigation>
