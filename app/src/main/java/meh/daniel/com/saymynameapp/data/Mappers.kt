@@ -6,7 +6,7 @@ import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
 import meh.daniel.com.saymynameapp.domain.model.Character
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
 
-internal fun List<CharacterNW>.toDomainFromNW() : List<Character>{
+internal fun List<CharacterNW>.toDomain() : List<Character>{
     return map {
         Character(
             id = it.charId,
@@ -17,7 +17,7 @@ internal fun List<CharacterNW>.toDomainFromNW() : List<Character>{
     }
 }
 
-internal fun CharacterNW.toDomainFromNW(): CharacterDetails {
+internal fun CharacterNW.toDomain(): CharacterDetails {
     return CharacterDetails(
         id = charId,
         name = name,
@@ -29,18 +29,7 @@ internal fun CharacterNW.toDomainFromNW(): CharacterDetails {
     )
 }
 
-internal fun List<CharacterSW>.toDomainCharacterFromSW(): List<Character> {
-    return map {
-        Character(
-            id = it.id.toInt(),
-            name = it.name,
-            image = it.image,
-            birthday = it.birthday,
-        )
-    }
-}
-
-internal fun CharacterDetailsSW.toDomainCharacterDetailFromSW(): CharacterDetails {
+internal fun CharacterDetailsSW.toDomain(): CharacterDetails {
     return CharacterDetails(
         id = id.toInt(),
         name = name,
@@ -52,7 +41,7 @@ internal fun CharacterDetailsSW.toDomainCharacterDetailFromSW(): CharacterDetail
     )
 }
 
-internal fun CharacterNW.toDetailSWFromNW(): CharacterDetailsSW {
+internal fun CharacterNW.toSW(): CharacterDetailsSW {
     return CharacterDetailsSW(
         id = charId.toLong(),
         name = name,
@@ -64,12 +53,23 @@ internal fun CharacterNW.toDetailSWFromNW(): CharacterDetailsSW {
     )
 }
 
-internal fun List<CharacterNW>.toSWCharacterFromNW(): List<CharacterSW> {
+internal fun List<CharacterNW>.toSW(): List<CharacterSW> {
     return map {
         CharacterSW(
             id = it.charId.toLong(),
             name = it.name,
             image = it.img,
+            birthday = it.birthday,
+        )
+    }
+}
+
+internal fun List<CharacterSW>.toDomainFromSW(): List<Character> {
+    return map {
+        Character(
+            id = it.id.toInt(),
+            name = it.name,
+            image = it.image,
             birthday = it.birthday,
         )
     }

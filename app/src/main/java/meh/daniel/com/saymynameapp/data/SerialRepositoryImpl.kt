@@ -1,6 +1,5 @@
 package meh.daniel.com.saymynameapp.data
 
-import android.util.Log
 import meh.daniel.com.saymynameapp.data.db.SerialDataBase
 import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
 import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
@@ -30,7 +29,7 @@ class SerialRepositoryImpl(
             Episode(
                 name = episode.name,
                 numberEpisode = episode.numberEpisode,
-                characters = listHero.toDomainCharacterFromSW()
+                characters = listHero.toDomainFromSW()
             )
         } catch (e: Throwable) {
             val episodeNW = api.getEpisode(numberEpisode = episode)
@@ -57,31 +56,31 @@ class SerialRepositoryImpl(
                     listIdCharacter = listId
                 )
             )
-            dataBase.serialDao().insertCharacter(listHero.toSWCharacterFromNW())
+            dataBase.serialDao().insertCharacter(listHero.toSW())
             Episode(
                 name = nameEpisode,
                 numberEpisode = numberEpisode,
-                characters = listHero.toList().toDomainFromNW()
+                characters = listHero.toList().toDomain()
             )
         }
     }
     override suspend fun getCharacterDetailsBy(id: Int): CharacterDetails {
         return try {
-            dataBase.serialDao().getCharacterDetails(id.toLong()).toDomainCharacterDetailFromSW()
+            dataBase.serialDao().getCharacterDetails(id.toLong()).toDomain()
         } catch (e: Throwable) {
             val characterDetails: CharacterNW = api.getHeroById(id)[0]
-            dataBase.serialDao().insertCharacterDetails(characterDetails.toDetailSWFromNW())
-            characterDetails.toDomainFromNW()
+            dataBase.serialDao().insertCharacterDetails(characterDetails.toSW())
+            characterDetails.toDomain()
         }
     }
     override suspend fun getCharacterBy(name: String): List<Character> {
         return try {
-            val listCharacter = dataBase.serialDao().findCharacterByName("$name%").toDomainCharacterFromSW()
+            val listCharacter = dataBase.serialDao().findCharacterByName("$name%").toDomainFromSW()
             if(listCharacter.isEmpty()) listCharacter else throw Throwable("isEmptyListCharacter")
         } catch (e: Throwable) {
             val character = api.getHeroByName(correctNameForGetHttp(name))
-            dataBase.serialDao().insertCharacter(character.toList().toSWCharacterFromNW())
-            character.toDomainFromNW()
+            dataBase.serialDao().insertCharacter(character.toList().toSW())
+            character.toDomain()
         }
     }
     private fun correctNameForGetHttp(names: String): String {
