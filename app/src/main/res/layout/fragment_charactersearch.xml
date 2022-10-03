@@ -10,17 +10,20 @@
         android:id="@+id/inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchNameEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_name"
-            android:inputType="text"
-            android:textColorHint="#546E7A" />
+            style="@style/hero_search_input_layout"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSearch"
@@ -29,7 +32,8 @@
         android:text="@string/search"
         android:layout_gravity="center"
         android:paddingVertical="5dp"
-        app:cardCornerRadius="20dp"
+        android:layout_margin="8dp"
+        app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_margin="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonSearch"
         app:layout_constraintEnd_toEndOf="parent"

@@ -4,6 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="invisibility">#00000000</color>
+    <color name="base_color_back">#DAD0D0</color>
+    <color name="color_for_detail">#DDCBD1D6</color>
+    <color name="item_hero_name_color">#8A8686</color>
+    <color name="color_hint">#546E7A</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

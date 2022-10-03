@@ -9,7 +9,7 @@
     </style>
 
     <style name="item_button_card_view">
-        <item name="android:backgroundTint">#DAD0D0</item>
+        <item name="android:backgroundTint">@color/base_color_back</item>
     </style>
     <style name="item_button" parent="text_caption">
         <item name="android:textColor">@color/black</item>
@@ -33,7 +33,7 @@
     </style>
 
     <style name="item_hero_name" parent="text_caption">
-        <item name="android:textColor">#8A8686</item>
+        <item name="android:textColor">@color/item_hero_name_color</item>
         <item name="android:fontFamily">cursive</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
@@ -43,7 +43,7 @@
     </style>
 
     <style name="hero_detail_info_screen">
-        <item name="android:background">#DDCBD1D6</item>
+        <item name="android:background">@color/color_for_detail</item>
     </style>
     <style name="hero_detail_info_menu">
         <item name="android:background">@color/black</item>
@@ -74,9 +74,22 @@
     </style>
 
     <style name="hero_search_button" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/base_color_back</item>
         <item name="android:fontFamily">cursive</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="hero_search_input_layout" parent="text_caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/base_color_back</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textColorHint">@color/color_hint</item>
     </style>
 </resources>
