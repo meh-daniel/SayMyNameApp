@@ -59,4 +59,3 @@ https://breakingbadapi.com/
 + converter gson
 + jetpack navigation
 + Coroutines
-+ 
