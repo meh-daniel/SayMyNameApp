@@ -20,8 +20,8 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
 
     override val viewModel: CharacterSearchViewModel by viewModels()
 
-    private val heroAdapter = HeroAdapter {
-        routeToDetails(it.id)
+    private val characterSearchAdapter = CharacterSearchAdapter { onClickCharacter ->
+        routeToDetails(onClickCharacter.id)
     }
 
     override fun initBinding(
@@ -68,7 +68,7 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
                 }
                 heroListByNameProgBar.visibility = if(state is CharacterSearchState.Loading) View.VISIBLE else View.GONE
                 heroListByNameRv.visibility = if(state is CharacterSearchState.Loaded) View.VISIBLE else View.GONE
-                if(state is CharacterSearchState.Loaded) heroAdapter.submitList(state.character) else heroAdapter.submitList(emptyList())
+                if(state is CharacterSearchState.Loaded) characterSearchAdapter.submitList(state.character) else characterSearchAdapter.submitList(emptyList())
             }
         }.launchIn(viewModel.viewModelScope)
     }
@@ -83,7 +83,7 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
 
     private fun initHeroRecycler() {
         with(binding) {
-            heroListByNameRv.adapter = heroAdapter
+            heroListByNameRv.adapter = characterSearchAdapter
             heroListByNameRv.layoutManager =
                 LinearLayoutManager(
                     this@CharacterSearchFragment.context,

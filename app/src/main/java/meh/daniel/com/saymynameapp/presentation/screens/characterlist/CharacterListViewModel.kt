@@ -14,6 +14,8 @@ import meh.daniel.com.saymynameapp.core.BaseViewModel
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 import meh.daniel.com.saymynameapp.presentation.toUI
 
+private const val firstEpisode = 1
+
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(
     private val repository: SerialRepository
@@ -22,8 +24,8 @@ class CharacterListViewModel @Inject constructor(
     private val _characterListState = MutableStateFlow<CharacterListState>(CharacterListState.Loading)
     val characterListState: Flow<CharacterListState> = _characterListState.asStateFlow()
 
-    private val _numberCurrentEpisode = MutableStateFlow(1)
-    val numberCurrentEpisode: StateFlow<Int> = _numberCurrentEpisode.asStateFlow()
+    private val _numberCurrentEpisode = MutableStateFlow(firstEpisode)
+    private val numberCurrentEpisode: StateFlow<Int> = _numberCurrentEpisode.asStateFlow()
 
     init {
         loadHeroList()
@@ -34,7 +36,7 @@ class CharacterListViewModel @Inject constructor(
             if (_characterListState.value is CharacterListState.Loading) {
                 try {
                     val heroData = repository.getEpisode(numberCurrentEpisode.value)
-                    if (heroData.name.isEmpty()) {
+                    if (heroData.name.isBlank()) {
                         _characterListState.value = CharacterListState.Empty
                     } else {
                         val characterUiData : MutableList<CharacterUI> = mutableListOf()

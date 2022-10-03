@@ -20,8 +20,8 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
 
     override val viewModel: CharacterListViewModel by viewModels()
 
-    private val heroAdapter = HeroAdapter({
-        routeToDetails(it.id)
+    private val characterAdapter = CharacterAdapter({ onClickCharacter ->
+        routeToDetails(onClickCharacter.id)
     }, {
         viewModel.routeToNextEpisode()
     })
@@ -43,7 +43,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
         viewModel.characterListState.onEach { state ->
             with(binding) {
                 heroListRc.visibility = if(state is CharacterListState.Loaded) View.VISIBLE else View.GONE
-                if(state is CharacterListState.Loaded) heroAdapter.submitList(state.repos)
+                if(state is CharacterListState.Loaded) characterAdapter.submitList(state.repos)
                 progressBar.visibility = if (state is CharacterListState.Loading) View.VISIBLE else View.GONE
                 messageTxt.visibility = when(state) {
                     is CharacterListState.Empty -> View.VISIBLE
@@ -62,7 +62,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
 
     private fun initHeroRecycler() {
         with(binding) {
-            heroListRc.adapter = heroAdapter
+            heroListRc.adapter = characterAdapter
             heroListRc.layoutManager =
                 LinearLayoutManager(
                     this@CharacterListFragment.context,

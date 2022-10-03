@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.saymynameapp.core.BaseViewModel
 import meh.daniel.com.saymynameapp.domain.SerialRepository
+import meh.daniel.com.saymynameapp.domain.model.Character
 import meh.daniel.com.saymynameapp.presentation.toUI
 
 @HiltViewModel

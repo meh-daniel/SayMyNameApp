@@ -12,19 +12,19 @@ import meh.daniel.com.saymynameapp.databinding.ItemCharacterBinding
 import meh.daniel.com.saymynameapp.databinding.ItemHeaderBinding
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 
-class HeroAdapter(
-    private val onClickHero: (hero: CharacterUI.Character) -> Unit,
+class CharacterAdapter(
+    private val onClickCharacter: (hero: CharacterUI.Character) -> Unit,
     private val onClickButton: () -> Unit
 ) : ListAdapter<CharacterUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when(viewType) {
-        R.layout.item_character -> HeroViewHolder.from(parent, onClickHero)
-        R.layout.item_header -> HeaderViewHolder.from(parent)
-        R.layout.item_button_next -> ButtonNextViewHolder.from(parent, onClickButton)
+        R.layout.item_character -> CharacterViewHolder.onCreateViewHolder(parent, onClickCharacter)
+        R.layout.item_header -> HeaderViewHolder.onCreateViewHolder(parent)
+        R.layout.item_button_next -> ButtonNextViewHolder.onCreateViewHolder(parent, onClickButton)
         else -> throw Throwable("onCreateViewHolder exception - unknown view type by name: $viewType")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when(holder) {
-        is HeroViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Character)
+        is CharacterViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Character)
         is HeaderViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Header)
         is ButtonNextViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Button)
         else -> throw Throwable("onBindViewHolder exception - unknown holder of view by name ${holder.itemView.id}")
@@ -38,7 +38,7 @@ class HeroAdapter(
     }
 }
 
-class HeroViewHolder(
+class CharacterViewHolder(
     private val binding: ItemCharacterBinding,
     private val onClickItem: (hero: CharacterUI.Character) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
@@ -58,10 +58,10 @@ class HeroViewHolder(
         }
     }
     companion object {
-        fun from(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
+        fun onCreateViewHolder(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemCharacterBinding.inflate(layoutInflater, parent, false)
-            return HeroViewHolder(binding, onClickItem)
+            return CharacterViewHolder(binding, onClickItem)
         }
     }
 }
@@ -73,7 +73,7 @@ class HeaderViewHolder(private val binding: ItemHeaderBinding) : RecyclerView.Vi
         }
     }
     companion object {
-        fun from(parent: ViewGroup): RecyclerView.ViewHolder {
+        fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemHeaderBinding.inflate(layoutInflater, parent, false)
             return HeaderViewHolder(binding)
@@ -94,7 +94,7 @@ class ButtonNextViewHolder(
         }
     }
     companion object {
-        fun from(parent: ViewGroup, onClickButton: () -> Unit): RecyclerView.ViewHolder {
+        fun onCreateViewHolder(parent: ViewGroup, onClickButton: () -> Unit): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemButtonNextBinding.inflate(layoutInflater, parent, false)
             return ButtonNextViewHolder(binding, onClickButton)

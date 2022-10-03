@@ -10,16 +10,16 @@ import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.ItemCharacterBinding
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 
-class HeroAdapter(
+class CharacterSearch4Adapter(
     private val onClickHero: (hero: CharacterUI.Character) -> Unit
 ) : ListAdapter<CharacterUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when(viewType) {
-        R.layout.item_character -> HeroViewHolder.from(parent, onClickHero)
+        R.layout.item_character -> CharacterViewHolder.onCreateViewHolder(parent, onClickHero)
         else -> throw Throwable("onCreateViewHolder exception - unknown view type by name: $viewType")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) = when(holder) {
-        is HeroViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Character)
+        is CharacterViewHolder -> holder.bind(item = getItem(position) as CharacterUI.Character)
         else -> throw Throwable("onBindViewHolder exception - unknown holder of view by name ${holder.itemView.id}")
     }
 
@@ -29,7 +29,7 @@ class HeroAdapter(
     }
 }
 
-class HeroViewHolder(
+class CharacterViewHolder(
     private val binding: ItemCharacterBinding,
     private val onClickItem: (hero: CharacterUI.Character) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
@@ -49,10 +49,10 @@ class HeroViewHolder(
         }
     }
     companion object {
-        fun from(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
+        fun onCreateViewHolder(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemCharacterBinding.inflate(layoutInflater, parent, false)
-            return HeroViewHolder(binding, onClickItem)
+            return CharacterViewHolder(binding, onClickItem)
         }
     }
 }

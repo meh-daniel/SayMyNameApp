@@ -64,7 +64,8 @@ internal fun List<CharacterNW>.toSW(): List<CharacterSW> {
     }
 }
 
-internal fun List<CharacterSW>.toDomainFromSW(): List<Character> {
+@JvmName("toDomainCharacterSW")
+internal fun List<CharacterSW>.toDomain(): List<Character> {
     return map {
         Character(
             id = it.id.toInt(),
