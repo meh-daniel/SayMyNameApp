@@ -1,7 +1,7 @@
 package meh.daniel.com.saymynameapp.data.nw
 
-import meh.daniel.com.saymynameapp.data.nw.modelNW.EpisodeNW
-import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
+import meh.daniel.com.saymynameapp.data.nw.model.EpisodeNW
+import meh.daniel.com.saymynameapp.data.nw.model.CharacterNW
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

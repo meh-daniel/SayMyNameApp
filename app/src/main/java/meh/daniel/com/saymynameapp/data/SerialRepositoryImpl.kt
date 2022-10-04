@@ -1,9 +1,9 @@
 package meh.daniel.com.saymynameapp.data
 
 import meh.daniel.com.saymynameapp.data.db.SerialDataBase
-import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
+import meh.daniel.com.saymynameapp.data.db.model.EpisodeSW
 import meh.daniel.com.saymynameapp.data.nw.BreakingBadApi
-import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
+import meh.daniel.com.saymynameapp.data.nw.model.CharacterNW
 import meh.daniel.com.saymynameapp.domain.SerialRepository
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
 import meh.daniel.com.saymynameapp.domain.model.Episode

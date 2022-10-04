@@ -1,8 +1,8 @@
 package meh.daniel.com.saymynameapp.data
 
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterDetailsSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
-import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterDetailsSW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterSW
+import meh.daniel.com.saymynameapp.data.nw.model.CharacterNW
 import meh.daniel.com.saymynameapp.domain.model.Character
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
 

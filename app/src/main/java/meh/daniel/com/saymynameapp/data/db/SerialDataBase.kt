@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterDetailsSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterDetailsSW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterSW
+import meh.daniel.com.saymynameapp.data.db.model.EpisodeSW
 
 @Database(
     entities = arrayOf(

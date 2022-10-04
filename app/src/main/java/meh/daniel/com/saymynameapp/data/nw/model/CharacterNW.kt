@@ -1,4 +1,4 @@
-package meh.daniel.com.saymynameapp.data.nw.modelNW
+package meh.daniel.com.saymynameapp.data.nw.model
 
 
 import com.google.gson.annotations.SerializedName

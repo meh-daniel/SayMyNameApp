@@ -1,4 +1,4 @@
-package meh.daniel.com.saymynameapp.data.db.modelSW
+package meh.daniel.com.saymynameapp.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

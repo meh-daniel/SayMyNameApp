@@ -4,9 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterDetailsSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
-import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterDetailsSW
+import meh.daniel.com.saymynameapp.data.db.model.CharacterSW
+import meh.daniel.com.saymynameapp.data.db.model.EpisodeSW
 
 @Dao
 interface SerialDao {
