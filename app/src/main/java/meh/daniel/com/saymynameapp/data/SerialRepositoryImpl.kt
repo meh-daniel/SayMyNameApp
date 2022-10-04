@@ -40,12 +40,12 @@ class SerialRepositoryImpl(
             }
         }
 
-        dataBase.serialDao().insertCharacter(characters.toSW())
+        dataBase.serialDao().insertCharacter(characters.toList().toSW())
         dataBase.serialDao().insertEpisode(
             EpisodeSW(
                 name = nameEpisode,
                 numberEpisode = numberEpisode,
-                listIdCharacter = characters.toSW().toSW()
+                listIdCharacter = characters.toSW()
             )
         )
         Episode(
@@ -77,13 +77,6 @@ class SerialRepositoryImpl(
     }
 }
 
-private fun List<CharacterNW>.toDomainOne(): Character {
-    return Character(
-        id = first().charId,
-        name = first().name,
-        image = first().img,
-        birthday = first().birthday,
-    )
-}
+
 
 
