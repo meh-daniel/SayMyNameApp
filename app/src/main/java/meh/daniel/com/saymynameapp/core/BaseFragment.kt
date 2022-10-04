@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<ViewModel: androidx.lifecycle.ViewModel, Binding : ViewBinding>(
+abstract class BaseFragment<ViewModel: BaseViewModel, Binding : ViewBinding>(
     @LayoutRes layoutId: Int
 ) : Fragment(layoutId){
 

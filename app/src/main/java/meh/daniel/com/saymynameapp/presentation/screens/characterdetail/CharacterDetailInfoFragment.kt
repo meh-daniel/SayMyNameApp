@@ -4,11 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.FragmentCharacterdetailinfoBinding
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
@@ -35,7 +32,7 @@ class CharacterDetailInfoFragment : BaseFragment<CharacterDetailInfoViewModel, F
         setupCharacterState()
     }
     private fun setupCharacterState() {
-        viewModel.characterState.onEach { state ->
+        viewModel.state.observe(this) { state ->
             with(binding) {
                 photoNameCV.visibility = if (state is CharacterDetailInfoState.Loaded) View.VISIBLE else View.GONE
                 detailInfoCV.visibility = if (state is CharacterDetailInfoState.Loaded) View.VISIBLE else View.GONE
@@ -52,7 +49,7 @@ class CharacterDetailInfoFragment : BaseFragment<CharacterDetailInfoViewModel, F
                     else -> ""
                 }
             }
-        }.launchIn(viewModel.viewModelScope)
+        }
     }
 
     private fun setData(hero: CharacterDetails){

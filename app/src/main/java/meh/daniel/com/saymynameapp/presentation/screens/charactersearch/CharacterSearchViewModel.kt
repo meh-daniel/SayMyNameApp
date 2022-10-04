@@ -1,43 +1,40 @@
 package meh.daniel.com.saymynameapp.presentation.screens.charactersearch
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import meh.daniel.com.saymynameapp.core.BaseViewModel
 import meh.daniel.com.saymynameapp.domain.SerialRepository
 import meh.daniel.com.saymynameapp.presentation.toUI
 
 @HiltViewModel
 class CharacterSearchViewModel @Inject constructor(
     private val repository: SerialRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
-    private val _action: Channel<CharacterSearchAction> = Channel(Channel.BUFFERED)
-    var actionFlow: Flow<CharacterSearchAction> = _action.receiveAsFlow()
+    private val _action = MutableLiveData<CharacterSearchAction>()
+    val action: LiveData<CharacterSearchAction> get()= _action
 
-    private val _state = MutableStateFlow<CharacterSearchState>(CharacterSearchState.Idle)
-    val stateFlow: Flow<CharacterSearchState> = _state.asStateFlow()
+    private val _state = MutableLiveData<CharacterSearchState>(CharacterSearchState.Idle)
+    val state: LiveData<CharacterSearchState> get()= _state
 
-    fun loadHeroList(nameInput: String) {
+    fun loadCharacterList(nameInput: String) {
         _state.value = CharacterSearchState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             if (_state.value is CharacterSearchState.Loading) {
                 try {
                     val heroData = repository.getCharacterBy(nameInput)
                     if (heroData.isEmpty()) {
-                        _state.value = CharacterSearchState.Empty
+                        setState(CharacterSearchState.Empty)
                     } else {
-                        _state.value = CharacterSearchState.Loaded(heroData.toUI())
+                        setState(CharacterSearchState.Loaded(heroData.toUI()))
                     }
                 } catch (e: Throwable) {
-                    _state.value = CharacterSearchState.Error(e.message.toString())
+                    setState(CharacterSearchState.Error(e.message.toString()))
                 }
             }
         }
@@ -51,9 +48,15 @@ class CharacterSearchViewModel @Inject constructor(
         }
     }
 
+    private fun setState(state: CharacterSearchState) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _state.value = state
+        }
+    }
+
     private fun sendAction(action: CharacterSearchAction){
         viewModelScope.launch(Dispatchers.Main){
-            _action.send(action)
+            _action.value = action
         }
     }
 

@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.FragmentCharacterlistBinding
 import meh.daniel.com.saymynameapp.core.BaseFragment
@@ -41,7 +38,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
     }
 
     private fun setupHeroListState() {
-        viewModel.characterListState.onEach { state ->
+        viewModel.characterListState.observe(this) { state ->
             with(binding) {
                 heroListRc.visibility = if(state is CharacterListState.Loaded) View.VISIBLE else View.GONE
                 if(state is CharacterListState.Loaded) characterAdapter.submitList(state.repos)
@@ -56,9 +53,8 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
                     is CharacterListState.Error -> state.error
                     else -> ""
                 }
-
             }
-        }.launchIn(viewModel.viewModelScope)
+        }
     }
 
     private fun initHeroRecycler() {

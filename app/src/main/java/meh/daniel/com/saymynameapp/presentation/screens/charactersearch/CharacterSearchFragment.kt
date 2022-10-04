@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.FragmentCharactersearchBinding
 import meh.daniel.com.saymynameapp.core.BaseFragment
@@ -45,16 +42,16 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
     }
 
     private fun setupSubscriberAction() {
-        viewModel.actionFlow.onEach { action ->
+        viewModel.action.observe(this) { action ->
             when(action) {
                 is CharacterSearchAction.SearchByName -> {
-                    viewModel.loadHeroList(action.name)
+                    viewModel.loadCharacterList(action.name)
                 }
             }
-        }.launchIn(viewModel.viewModelScope)
+        }
     }
     private fun setupSubscriberState(){
-        viewModel.stateFlow.onEach { state ->
+        viewModel.state.observe(this) { state ->
             with(binding){
                 characterListByNameMessage.text = when(state) {
                     is CharacterSearchState.Idle -> getString(R.string.start)
@@ -72,7 +69,7 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
                 characterListByNameRv.visibility = if(state is CharacterSearchState.Loaded) View.VISIBLE else View.GONE
                 if(state is CharacterSearchState.Loaded) characterSearchAdapter.submitList(state.character) else characterSearchAdapter.submitList(emptyList())
             }
-        }.launchIn(viewModel.viewModelScope)
+        }
     }
 
     private fun initListenerSearchButton(){

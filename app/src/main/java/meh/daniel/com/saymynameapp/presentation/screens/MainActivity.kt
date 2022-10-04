@@ -1,4 +1,4 @@
-package meh.daniel.com.saymynameapp.presentation
+package meh.daniel.com.saymynameapp.presentation.screens
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
