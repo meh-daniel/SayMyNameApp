@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_half">5dp</dimen>
+    <dimen name="margin_standart_layout">10dp</dimen>
+    <dimen name="margin_max_layout">60dp</dimen>
+</resources>
