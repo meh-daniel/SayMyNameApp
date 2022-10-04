@@ -64,6 +64,7 @@ internal fun List<CharacterNW>.toSW(): List<CharacterSW> {
     }
 }
 
+
 @JvmName("toDomainCharacterSW")
 internal fun List<CharacterSW>.toDomain(): List<Character> {
     return map {
@@ -72,6 +73,35 @@ internal fun List<CharacterSW>.toDomain(): List<Character> {
             name = it.name,
             image = it.image,
             birthday = it.birthday,
+        )
+    }
+}
+
+
+internal fun CharacterSW.toDomain(): Character {
+    return Character(
+        id = id.toInt(),
+        name = name,
+        image = image,
+        birthday = birthday
+    )
+}
+internal fun List<CharacterSW>.toSW(): String {
+    var id = ""
+    map {
+        id += "${it.id} "
+    }
+    return id
+}
+
+@JvmName("toSWCharacter")
+internal fun MutableList<Character>.toSW(): List<CharacterSW> {
+    return map {
+        CharacterSW(
+            id = it.id.toLong(),
+            name = it.name,
+            image = it.image,
+            birthday = it.birthday
         )
     }
 }

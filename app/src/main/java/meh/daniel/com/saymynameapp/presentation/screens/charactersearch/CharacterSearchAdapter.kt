@@ -10,7 +10,7 @@ import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.ItemCharacterBinding
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 
-class CharacterSearch4Adapter(
+class CharacterSearchAdapter(
     private val onClickHero: (hero: CharacterUI.Character) -> Unit
 ) : ListAdapter<CharacterUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when(viewType) {

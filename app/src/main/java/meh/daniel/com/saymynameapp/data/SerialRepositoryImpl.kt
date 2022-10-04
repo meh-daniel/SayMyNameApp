@@ -1,7 +1,6 @@
 package meh.daniel.com.saymynameapp.data
 
 import meh.daniel.com.saymynameapp.data.db.SerialDataBase
-import meh.daniel.com.saymynameapp.data.db.modelSW.CharacterSW
 import meh.daniel.com.saymynameapp.data.db.modelSW.EpisodeSW
 import meh.daniel.com.saymynameapp.data.nw.BreakingBadApi
 import meh.daniel.com.saymynameapp.data.nw.modelNW.CharacterNW
@@ -17,50 +16,42 @@ class SerialRepositoryImpl(
 
     override suspend fun getEpisode(episode: Int): Episode = try {
         val episode = dataBase.serialDao().getEpisode(episode.toLong())
-        val listCharactersOfEpisode = episode.listIdCharacter.split(" ").toList()
-        val listCharacters = mutableListOf<CharacterSW>()
-
-        for(i in listCharactersOfEpisode.indices) {
-            if(listCharactersOfEpisode[i].isNotBlank()) {
-                listCharacters.add(dataBase.serialDao().getCharacterById(listCharactersOfEpisode[i].toLong()))
-            }
+        val characters = mutableListOf<Character>()
+        episode.listIdCharacter.split(" ").toList().map { StringOfId ->
+            if(StringOfId.isNotBlank()) characters.add(dataBase.serialDao().getCharacterById(StringOfId.toLong()).toDomain())
         }
-
         Episode(
             name = episode.name,
             numberEpisode = episode.numberEpisode,
-            characters = listCharacters.toDomain()
+            characters = characters,
         )
     } catch (e: Throwable) {
-        val episodeNW = api.getEpisode(numberEpisode = episode)
-        val nameEpisode = episodeNW.first().title
-        val numberEpisode = episodeNW.first().episodeId
-        val listCharactersOfEpisode: List<String> = episodeNW.first().characters
-        val listCharacters = mutableListOf<CharacterNW>()
-        var listId = ""
+        val episode = api.getEpisode(numberEpisode = episode)
+        val nameEpisode = episode.first().title
+        val numberEpisode = episode.first().episodeId
+        val charactersEpisode: List<String> = episode.first().characters
 
-        for (i in listCharactersOfEpisode.indices){
-            val item = correctNameForGetHttp(listCharactersOfEpisode.first())
+        val characters = mutableListOf<Character>()
+        for (i in charactersEpisode.indices){
+            val item = correctNameForGetHttp(charactersEpisode[i])
             val itemGet = api.getHeroByName(item)
             if (itemGet.isNotEmpty()){
-                val item = itemGet.first()
-                listCharacters.add(item)
-                listId += "${item.charId} "
+                characters.add(itemGet.toDomainOne())
             }
         }
 
+        dataBase.serialDao().insertCharacter(characters.toSW())
         dataBase.serialDao().insertEpisode(
             EpisodeSW(
                 name = nameEpisode,
                 numberEpisode = numberEpisode,
-                listIdCharacter = listId
+                listIdCharacter = characters.toSW().toSW()
             )
         )
-        dataBase.serialDao().insertCharacter(listCharacters.toSW())
         Episode(
             name = nameEpisode,
             numberEpisode = numberEpisode,
-            characters = listCharacters.toList().toDomain()
+            characters = characters.toList(),
         )
     }
 
@@ -85,3 +76,14 @@ class SerialRepositoryImpl(
         return names.replace(' ', '+', true)
     }
 }
+
+private fun List<CharacterNW>.toDomainOne(): Character {
+    return Character(
+        id = first().charId,
+        name = first().name,
+        image = first().img,
+        birthday = first().birthday,
+    )
+}
+
+
