@@ -11,10 +11,10 @@ import meh.daniel.com.saymynameapp.databinding.ItemCharacterBinding
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 
 class CharacterSearchAdapter(
-    private val onClickHero: (hero: CharacterUI.Character) -> Unit
+    private val onClickCharacter: (character: CharacterUI.Character) -> Unit
 ) : ListAdapter<CharacterUI, RecyclerView.ViewHolder>(HeroUIDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when(viewType) {
-        R.layout.item_character -> CharacterViewHolder.onCreateViewHolder(parent, onClickHero)
+        R.layout.item_character -> CharacterViewHolder.onCreateViewHolder(parent, onClickCharacter)
         else -> throw Throwable("onCreateViewHolder exception - unknown view type by name: $viewType")
     }
 
@@ -35,12 +35,12 @@ class CharacterViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: CharacterUI.Character){
         with(binding){
-            nameHero.text = item.name
-            Glide.with(photoHero)
+            nameCharacter.text = item.name
+            Glide.with(photoCharacter)
                 .load(item.image)
-                .into(photoHero)
+                .into(photoCharacter)
             setListener(item)
-            birthdayHero.text = item.birthdate
+            birthdayCharacter.text = item.birthdate
         }
     }
     private fun setListener(item: CharacterUI.Character) {
@@ -49,7 +49,7 @@ class CharacterViewHolder(
         }
     }
     companion object {
-        fun onCreateViewHolder(parent: ViewGroup, onClickItem: (hero: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
+        fun onCreateViewHolder(parent: ViewGroup, onClickItem: (character: CharacterUI.Character) -> Unit): RecyclerView.ViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemCharacterBinding.inflate(layoutInflater, parent, false)
             return CharacterViewHolder(binding, onClickItem)

@@ -21,7 +21,7 @@
         android:name="meh.daniel.com.saymynameapp.presentation.screens.characterdetail.CharacterDetailInfoFragment"
         android:label="@string/detail_character">
         <argument
-            android:name="idHero"
+            android:name="id_character"
             app:argType="string" />
     </fragment>
 

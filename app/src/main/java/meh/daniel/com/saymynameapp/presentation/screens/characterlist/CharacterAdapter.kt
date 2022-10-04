@@ -44,12 +44,12 @@ class CharacterViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: CharacterUI.Character){
         with(binding){
-            nameHero.text = item.name
-            Glide.with(photoHero)
+            nameCharacter.text = item.name
+            Glide.with(photoCharacter)
                 .load(item.image)
-                .into(photoHero)
+                .into(photoCharacter)
             setListener(item)
-            birthdayHero.text = item.birthdate
+            birthdayCharacter.text = item.birthdate
         }
     }
     private fun setListener(item: CharacterUI.Character) {

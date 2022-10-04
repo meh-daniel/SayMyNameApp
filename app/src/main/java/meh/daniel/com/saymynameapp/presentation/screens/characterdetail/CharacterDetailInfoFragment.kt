@@ -14,6 +14,8 @@ import meh.daniel.com.saymynameapp.databinding.FragmentCharacterdetailinfoBindin
 import meh.daniel.com.saymynameapp.domain.model.CharacterDetails
 import meh.daniel.com.saymynameapp.core.BaseFragment
 
+const val ID_CHARACTER = "id_character"
+
 @AndroidEntryPoint
 class CharacterDetailInfoFragment : BaseFragment<CharacterDetailInfoViewModel, FragmentCharacterdetailinfoBinding>(R.layout.fragment_characterdetailinfo){
 
@@ -25,15 +27,15 @@ class CharacterDetailInfoFragment : BaseFragment<CharacterDetailInfoViewModel, F
     ): FragmentCharacterdetailinfoBinding = FragmentCharacterdetailinfoBinding.inflate(inflater, container, false)
 
     override fun initialize() {
-        arguments?.getString("IdHero")?.let {
+        arguments?.getString(ID_CHARACTER)?.let {
             viewModel.loadData(it.toInt())
         }
     }
     override fun setupSubscribers() {
-        setupHeroState()
+        setupCharacterState()
     }
-    private fun setupHeroState() {
-        viewModel.heroState.onEach { state ->
+    private fun setupCharacterState() {
+        viewModel.characterState.onEach { state ->
             with(binding) {
                 photoNameCV.visibility = if (state is CharacterDetailInfoState.Loaded) View.VISIBLE else View.GONE
                 detailInfoCV.visibility = if (state is CharacterDetailInfoState.Loaded) View.VISIBLE else View.GONE
@@ -55,13 +57,13 @@ class CharacterDetailInfoFragment : BaseFragment<CharacterDetailInfoViewModel, F
 
     private fun setData(hero: CharacterDetails){
         with(binding){
-            Glide.with(photoHero)
+            Glide.with(photoCharacter)
                 .load(hero.image)
-                .into(photoHero)
-            nameHero.text = hero.name
-            birthdayHero.text = hero.birthday
-            nicknameHero.text = hero.nickname
-            statusHero.text = hero.status
+                .into(photoCharacter)
+            nameCharacter.text = hero.name
+            birthdayCharacter.text = hero.birthday
+            nicknameCharacter.text = hero.nickname
+            statusCharacter.text = hero.status
         }
     }
 }

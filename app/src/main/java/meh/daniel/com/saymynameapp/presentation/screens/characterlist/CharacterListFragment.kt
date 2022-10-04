@@ -15,16 +15,17 @@ import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.FragmentCharacterlistBinding
 import meh.daniel.com.saymynameapp.core.BaseFragment
 
+const val ID_CHARACTER = "id_character"
+
 @AndroidEntryPoint
 class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentCharacterlistBinding>(R.layout.fragment_characterlist){
 
     override val viewModel: CharacterListViewModel by viewModels()
 
-    private val characterAdapter = CharacterAdapter({ onClickCharacter ->
-        routeToDetails(onClickCharacter.id)
-    }, {
-        viewModel.routeToNextEpisode()
-    })
+    private val characterAdapter = CharacterAdapter(
+        onClickCharacter = { onClickCharacter -> routeToDetails(onClickCharacter.id) },
+        onClickButton = { viewModel.routeToNextEpisode() }
+    )
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -74,7 +75,7 @@ class CharacterListFragment : BaseFragment<CharacterListViewModel, FragmentChara
 
     private fun routeToDetails(id: Int){
         val bundle = Bundle()
-        bundle.putString("IdHero", id.toString())
+        bundle.putString(ID_CHARACTER, id.toString())
         findNavController().navigate(R.id.action_heroListFragment_to_heroDetailInfoFragment, bundle)
     }
 

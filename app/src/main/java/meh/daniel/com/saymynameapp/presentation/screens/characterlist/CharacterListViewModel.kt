@@ -1,5 +1,6 @@
 package meh.daniel.com.saymynameapp.presentation.screens.characterlist
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -10,7 +11,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import meh.daniel.com.saymynameapp.domain.SerialRepository
-import meh.daniel.com.saymynameapp.core.BaseViewModel
 import meh.daniel.com.saymynameapp.presentation.model.CharacterUI
 import meh.daniel.com.saymynameapp.presentation.toUI
 
@@ -19,7 +19,7 @@ private const val firstEpisode = 1
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(
     private val repository: SerialRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     private val _characterListState = MutableStateFlow<CharacterListState>(CharacterListState.Loading)
     val characterListState: Flow<CharacterListState> = _characterListState.asStateFlow()
@@ -46,9 +46,7 @@ class CharacterListViewModel @Inject constructor(
                         _characterListState.value = CharacterListState.Loaded(characterUiData)
                     }
                 } catch (e: Throwable) {
-                    _characterListState.value = when (e) {
-                        else -> CharacterListState.Error(e.message.toString())
-                    }
+                    _characterListState.value = CharacterListState.Error(e.message.toString())
                 }
             }
         }

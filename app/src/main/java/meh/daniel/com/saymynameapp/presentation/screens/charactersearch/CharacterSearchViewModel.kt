@@ -1,6 +1,6 @@
 package meh.daniel.com.saymynameapp.presentation.screens.charactersearch
 
-import android.accounts.NetworkErrorException
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -11,15 +11,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import meh.daniel.com.saymynameapp.core.BaseViewModel
 import meh.daniel.com.saymynameapp.domain.SerialRepository
-import meh.daniel.com.saymynameapp.domain.model.Character
 import meh.daniel.com.saymynameapp.presentation.toUI
 
 @HiltViewModel
 class CharacterSearchViewModel @Inject constructor(
     private val repository: SerialRepository
-) : BaseViewModel(){
+) : ViewModel() {
 
     private val _action: Channel<CharacterSearchAction> = Channel(Channel.BUFFERED)
     var actionFlow: Flow<CharacterSearchAction> = _action.receiveAsFlow()
@@ -39,10 +37,7 @@ class CharacterSearchViewModel @Inject constructor(
                         _state.value = CharacterSearchState.Loaded(heroData.toUI())
                     }
                 } catch (e: Throwable) {
-                    _state.value = when (e) {
-                        is NetworkErrorException -> CharacterSearchState.Error(e.message.toString())
-                        else -> CharacterSearchState.Error(e.message.toString())
-                    }
+                    _state.value = CharacterSearchState.Error(e.message.toString())
                 }
             }
         }

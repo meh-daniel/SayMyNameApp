@@ -12,7 +12,7 @@
     style="@style/item_header_card_view">
 
     <TextView
-        android:id="@+id/header_title"
+        android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -21,30 +21,30 @@
         android:layout_marginVertical="5dp"
         android:layout_marginStart="5dp">
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/photoHero"
+            android:id="@+id/photoCharacter"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background"/>
         <TextView
-            android:id="@+id/nameHero"
+            android:id="@+id/nameCharacter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/birthdayHero"
-            app:layout_constraintStart_toEndOf="@+id/photoHero"
+            app:layout_constraintBottom_toTopOf="@+id/birthdayCharacter"
+            app:layout_constraintStart_toEndOf="@+id/photoCharacter"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="name name name"
             style="@style/item_character_name"/>
         <TextView
-            android:id="@+id/birthdayHero"
+            android:id="@+id/birthdayCharacter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/photoHero"
-            app:layout_constraintTop_toBottomOf="@+id/nameHero"
+            app:layout_constraintStart_toEndOf="@+id/photoCharacter"
+            app:layout_constraintTop_toBottomOf="@+id/nameCharacter"
             tools:text="birthdate"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

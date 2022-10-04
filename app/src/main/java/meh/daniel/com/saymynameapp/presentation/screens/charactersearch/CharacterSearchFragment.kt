@@ -15,14 +15,16 @@ import meh.daniel.com.saymynameapp.R
 import meh.daniel.com.saymynameapp.databinding.FragmentCharactersearchBinding
 import meh.daniel.com.saymynameapp.core.BaseFragment
 
+const val ID_CHARACTER = "id_character"
+
 @AndroidEntryPoint
 class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentCharactersearchBinding>(R.layout.fragment_charactersearch) {
 
     override val viewModel: CharacterSearchViewModel by viewModels()
 
-    private val characterSearchAdapter = CharacterSearchAdapter { onClickCharacter ->
-        routeToDetails(onClickCharacter.id)
-    }
+    private val characterSearchAdapter = CharacterSearchAdapter (
+        onClickCharacter = { onClickCharacter -> routeToDetails(onClickCharacter.id) }
+    )
 
     override fun initBinding(
         inflater: LayoutInflater,
@@ -35,7 +37,7 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
     }
 
     override fun initialize() {
-        initHeroRecycler()
+        initCharacterRecycler()
     }
 
     override fun setupListeners() {
@@ -54,20 +56,20 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
     private fun setupSubscriberState(){
         viewModel.stateFlow.onEach { state ->
             with(binding){
-                heroListByNameMessage.text = when(state) {
+                characterListByNameMessage.text = when(state) {
                     is CharacterSearchState.Idle -> getString(R.string.start)
                     is CharacterSearchState.Empty -> getString(R.string.empty)
                     is CharacterSearchState.Error -> state.error
                     else -> ""
                 }
-                heroListByNameMessage.visibility = when(state) {
+                characterListByNameMessage.visibility = when(state) {
                     is CharacterSearchState.Idle -> View.VISIBLE
                     is CharacterSearchState.Empty -> View.VISIBLE
                     is CharacterSearchState.Error -> View.VISIBLE
                     else -> View.GONE
                 }
-                heroListByNameProgBar.visibility = if(state is CharacterSearchState.Loading) View.VISIBLE else View.GONE
-                heroListByNameRv.visibility = if(state is CharacterSearchState.Loaded) View.VISIBLE else View.GONE
+                characterListByNameProgBar.visibility = if(state is CharacterSearchState.Loading) View.VISIBLE else View.GONE
+                characterListByNameRv.visibility = if(state is CharacterSearchState.Loaded) View.VISIBLE else View.GONE
                 if(state is CharacterSearchState.Loaded) characterSearchAdapter.submitList(state.character) else characterSearchAdapter.submitList(emptyList())
             }
         }.launchIn(viewModel.viewModelScope)
@@ -81,10 +83,10 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
         }
     }
 
-    private fun initHeroRecycler() {
+    private fun initCharacterRecycler() {
         with(binding) {
-            heroListByNameRv.adapter = characterSearchAdapter
-            heroListByNameRv.layoutManager =
+            characterListByNameRv.adapter = characterSearchAdapter
+            characterListByNameRv.layoutManager =
                 LinearLayoutManager(
                     this@CharacterSearchFragment.context,
                     LinearLayoutManager.VERTICAL,
@@ -94,7 +96,7 @@ class CharacterSearchFragment : BaseFragment<CharacterSearchViewModel, FragmentC
     }
     private fun routeToDetails(id: Int){
         val bundle = Bundle()
-        bundle.putString("IdHero", id.toString())
+        bundle.putString(ID_CHARACTER, id.toString())
         findNavController().navigate(R.id.action_heroSearchFragment_to_heroDetailInfoFragment, bundle)
     }
 }

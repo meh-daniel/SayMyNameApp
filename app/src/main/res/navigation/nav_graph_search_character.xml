@@ -22,7 +22,7 @@
         android:label="fragment_herodetailinfo"
         tools:layout="@layout/fragment_characterdetailinfo">
         <argument
-            android:name="idHero"
+            android:name="id_character"
             app:argType="string" />
     </fragment>
 </navigation>
