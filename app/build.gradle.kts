@@ -1,14 +1,11 @@
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    id(Plugins.KOTLIN_ANDROID)
-    kotlin(Plugins.KAPT)
-}
-repositories {
-    mavenCentral()
-    google()
+    id(Plugins.AGP.APPLICATION)
+    id(Plugins.HILT)
+    kotlin(Plugins.Kotlin.ANDROID)
+    kotlin(Plugins.Kotlin.KAPT)
 }
 android {
-    compileSdk = 32
+    compileSdk = Config.compileSdk
     defaultConfig {
         applicationId = "meh.daniel.com.saymynameapp"
         minSdk =  Config.minSDK
@@ -34,8 +31,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = Config.Options.kotlinOptions
-
-        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
     kapt {
         arguments {
@@ -44,48 +39,37 @@ android {
             arg("room.expandProjection", "true")
         }
     }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
     buildFeatures.viewBinding = true
 }
-
 dependencies {
-    
-    // Network
-    implementation(Deps.Network.retrofit2)
-    implementation(Deps.Network.retrofit2Gson)
-    implementation(Deps.Network.logging)
-    // Hilt
-    implementation(Deps.Hilt.android)
-    kapt(Deps.Hilt.compiler)
-    // Lifecycle
-    implementation(Deps.Lifecycle.viewmodel)
-    implementation(Deps.Lifecycle.livedata)
-    implementation(Deps.Lifecycle.runtime)
-    // Navigation
-    implementation(Deps.Navigation.fragment)
-    implementation(Deps.Navigation.ui)
-    // Coroutines
-    implementation(Deps.Coroutines.core)
-    implementation(Deps.Coroutines.android)
-    // UI
-    implementation(Deps.UI.constraintLayout)
-    implementation(Deps.UI.recyclerView)
-    implementation(Deps.UI.progressbar)
-    implementation(Deps.UI.fragmentKtx)
-    implementation(Deps.UI.activityKtx)
-    // Android
-    implementation(Deps.Android.coreKtx)
-    implementation(Deps.Android.appCompat)
-    implementation(Deps.Android.appCompatResources)
-    implementation(Deps.Android.material)
-    // Test
-    testImplementation(Deps.Test.jUnit)
-    androidTestImplementation(Deps.Test.androidJUnit)
-    androidTestImplementation(Deps.Test.espresso)
-    androidTestImplementation(Deps.Test.mockitoCore)
-    androidTestImplementation(Deps.Test.mockitoKotlin)
+    implementation(Deps.Network.RETROFIT2)
+    implementation(Deps.Network.RETROFIT2_GSON)
+    implementation(Deps.Network.LOGGING_INERCEPTOR)
+    implementation(Deps.Hilt.ANDROID)
+    implementation(Deps.Room.KTX)
+    implementation(Deps.Room.RUNTIME)
+    kapt(Deps.Room.COMPILER)
+    kapt(Deps.Hilt.COMPILER)
+    implementation(Deps.Lifecycle.VIEW_MODEL)
+    implementation(Deps.Lifecycle.LIVE_DATA)
+    implementation(Deps.Lifecycle.RUNTIME)
+    implementation(Deps.Navigation.FRAGMENT)
+    implementation(Deps.Navigation.UI)
+    implementation(Deps.Coroutines.CORE)
+    implementation(Deps.Coroutines.ANDROID)
+    implementation(Deps.UI.CONSTRAINT_LAYOUT)
+    implementation(Deps.UI.RECYCLER_VIEW)
+    implementation(Deps.UI.PROGRESS_BAR)
+    implementation(Deps.UI.FRAGMENT_KTX)
+    implementation(Deps.UI.ACTIVITY_KTX)
+    implementation(Deps.ImageLoad.GLIDE)
+    implementation(Deps.ImageLoad.GLIDE_COMPILER)
+    implementation(Deps.Android.CORE_KTX)
+    implementation(Deps.Android.APPCOMPAT)
+    implementation(Deps.Android.MATERIAL)
+    testImplementation(Deps.Test.JUNIT)
+    androidTestImplementation(Deps.Test.ANDROID_JUNIT)
+    androidTestImplementation(Deps.Test.ESPRESSO)
+    androidTestImplementation(Deps.Test.MOCKITO_CORE)
+    androidTestImplementation(Deps.Test.MOCKITO_KOTLIN)
 }

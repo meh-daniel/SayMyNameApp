@@ -1,3 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SayMyNameApp</string>
+    <string name="app_name">SayMyName</string>
+    <string name="nextEpisode">next Episode</string>
+    <string name="empty">Empty</string>
+    <string name="start">"Start!"</string>
+    <string name="name">name:</string>
+    <string name="herolist">heroList</string>
+    <string name="search">Search</string>
+    <string name="birthday">Birthday</string>
+    <string name="nick_name">Nick Name</string>
+    <string name="status">status</string>
+    <string name="enter_name">enter name</string>
+    <string name="list_characters">List characters</string>
+    <string name="detail_character">Detail character</string>
+    <string name="search_character">Search character</string>
 </resources>

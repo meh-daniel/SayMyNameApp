@@ -2,7 +2,7 @@ import org.gradle.api.JavaVersion
 
 object Config {
 
-    const val compileSdk = 31
+    const val compileSdk = 32
     const val minSDK = 22
     const val targetSDK = 31
 
