@@ -1,11 +1,10 @@
 # SayMyNameApp
-Приложение показывает список персонажей из сериал "Во все тяжкие"
+The application shows a list of characters from the series "Breaking Bad"
 
-Api использованное в приложении:
+API used in the application:
 https://breakingbadapi.com/
 
-Дизайн приложения
-=====================
+# Application design
 
 * Presentation
     * SingleActivity
@@ -43,19 +42,10 @@ https://breakingbadapi.com/
 |<img width="1604"  src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName1.jpg"> |  <img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName2.jpg">|<img width="1604" src="https://github.com/meh-daniel/SayMyNameApp/blob/dev/photo-readme/SayMyName3.jpg">|
 
 ### Use case:
-+ Просмотр cписка персонажей по эпизодам сериала breakingBad
-+ Просмотр детальной информации о персонаже
-+ Поиск персонажа по имени
++ View the list of characters by episodes of the series breakingBad
++ View detailed information about the character
++ Search character by name
 
 
-
-### применённые библиотеки и фреймворки:
-+ BuildGradleDSL
-+ Hilt
-+ Lifecycle
-+ Room
-+ Retrofit
-+ okhttp3
-+ converter gson
-+ jetpack navigation
-+ Coroutines
+# Applied libraries and frameworks:
+https://github.com/meh-daniel/SayMyNameApp/blob/master/buildSrc/src/main/kotlin/Deps.kt
